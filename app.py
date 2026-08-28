@@ -863,10 +863,10 @@ with tab5:
     """, unsafe_allow_html=True)
 
     geo_data = pd.DataFrame([
-        {"commercial_query": "Best D2C VIP fashion & lingerie membership brands", "ai_platform": "ChatGPT Search", "brand_citation": "✅ Cited #1", "sentiment": "⭐ Luxury & Inclusive", "sources_cited": "Vogue, Forbes, Brand Home", "action_needed": "Maintain Domain Authority"},
-        {"commercial_query": "Affordable luxury lingerie monthly drop subscription", "ai_platform": "Perplexity Pro", "brand_citation": "✅ Cited #2", "sentiment": "⭐ High Quality / Fit", "sources_cited": "Elle, Byrdie, Reddit r/femalefashion", "action_needed": "Seed Reddit Discussion Threads"},
-        {"commercial_query": "Athleisure subscription box comparison 2026", "ai_platform": "Google AI Overviews", "brand_citation": "❌ Unranked", "sentiment": "Neutral / Missing", "sources_cited": "Wirecutter, Byrdie Editorial", "action_needed": "High-Priority Wirecutter Editorial Outreach"},
-        {"commercial_query": "Best wearable fitness recovery membership", "ai_platform": "Perplexity Pro", "brand_citation": "✅ Cited #1", "sentiment": "⭐ Scientific / Precision", "sources_cited": "TechCrunch, Men's Health", "action_needed": "Schema Markup Optimization"}
+        {"commercial_query": f"Best {brand_config['brand_name']} alternatives and VIP membership comparison", "ai_platform": "ChatGPT Search", "brand_citation": "✅ Cited #1", "sentiment": "⭐ Luxury & Inclusive", "sources_cited": "Vogue, Forbes, Brand Home", "action_needed": "Maintain Domain Authority"},
+        {"commercial_query": f"Affordable {brand_config['brand_name']} seasonal drop subscription reviews", "ai_platform": "Perplexity Pro", "brand_citation": "✅ Cited #2", "sentiment": "⭐ High Quality / Fit", "sources_cited": "Elle, Byrdie, Reddit r/femalefashion", "action_needed": "Seed Reddit Discussion Threads"},
+        {"commercial_query": "Best monthly lifestyle subscription box comparison 2026", "ai_platform": "Google AI Overviews", "brand_citation": "❌ Unranked", "sentiment": "Neutral / Missing", "sources_cited": "Wirecutter, Byrdie Editorial", "action_needed": "High-Priority Wirecutter Editorial Outreach"},
+        {"commercial_query": "Top customer-rated luxury apparel and activewear membership", "ai_platform": "Perplexity Pro", "brand_citation": "✅ Cited #1", "sentiment": "⭐ Premium / Precision", "sources_cited": "TechCrunch, Men's Health", "action_needed": "Schema Markup Optimization"}
     ])
     
     st.dataframe(geo_data, use_container_width=True)
@@ -887,6 +887,28 @@ with tab5:
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+    st.markdown("### 🤖 Execute AI GEO Citation Strategy Agent")
+    if st.button("🚀 Run Live GEO Source Audit & PR Roadmap", key="btn_m5", type="primary"):
+        if not api_key and not demo_mode:
+            st.error("Please enter an OpenAI API Key or toggle 'Use Instant Demo Cache' in the sidebar.")
+        elif demo_mode and not api_key:
+            with st.spinner("Agent analyzing LLM citation pathways and mapping digital PR gaps..."):
+                time.sleep(1)
+                st.markdown(f"""
+### 🤖 AGENT: GENERATIVE SEARCH AUDITOR & DIGITAL PR ROADMAP
+* **Core Recommendation for {brand_config['brand_name']}:** AI search engines synthesize answers using **consensus validation across un-gated editorial sources and user forums**.
+* **High-Priority Seeding Campaign:**
+  1. **Reddit Authority Seeding:** Commission organic styling reviews on *r/femalefashion* and *r/frugalfemalefashion* highlighting VIP Secret Vault perks.
+  2. **Editorial Wirecutter Syndication:** Pitch product comparison test samples to Wirecutter and Byrdie editors for inclusion in upcoming 2026 subscription guides.
+  3. **Entity Schema Injection:** Implement `ItemList` and `ProductGroup` JSON-LD schemas across all capsule landing pages to feed Google AI Overviews structured data directly.
+""")
+        else:
+            client = OpenAI(api_key=api_key)
+            with st.spinner("Agent analyzing LLM citation pathways..."):
+                prompt = f"You are a leading GEO and Digital PR Specialist. Provide a 3-step action roadmap for {brand_config['brand_name']} to dominate ChatGPT Search and Perplexity citations for commercial queries."
+                res = client.chat.completions.create(model=model_choice, messages=[{"role": "user", "content": prompt}], temperature=0.7)
+                st.markdown(res.choices[0].message.content)
 
 # -------------------------------------------------------------
 # MODULE 6: Programmatic SEO & GSC Striking Distance Gap Finder
@@ -916,7 +938,7 @@ with tab6:
     s1, s2, s3 = st.columns(3)
     s1.metric("Striking-Distance Impressions", "313,600 / mo", "High-Intent Volume")
     s2.metric("Projected Organic Traffic Gain", "+13,392 clicks / mo", "+287% CTR Expansion")
-    s3.metric("Average Current Ranking", "Pos 11.9", "Page 2 Opportunities")
+    s3.metric("Average Current Position", "Pos 11.9", "Page 2 Opportunities")
 
     st.markdown("""
     <div class="glass-card" style="border-left: 4px solid #3b82f6; background: #eff6ff; padding: 1.25rem; margin-top: 1rem;">
@@ -928,3 +950,38 @@ with tab6:
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+    st.markdown("### 🤖 Execute Programmatic Metadata & CTR Optimizer")
+    if st.button("🚀 Generate Programmatic Meta Titles & Schema", key="btn_m6", type="primary"):
+        if not api_key and not demo_mode:
+            st.error("Please enter an OpenAI API Key or toggle 'Use Instant Demo Cache' in the sidebar.")
+        elif demo_mode and not api_key:
+            with st.spinner("Agent synthesizing search-intent metadata and schema markup..."):
+                time.sleep(1)
+                st.markdown(f"""
+### 🤖 AGENT: PROGRAMMATIC METADATA & SCHEMA SYNTHESIZER
+* **Query Analyzed:** `vip membership lingerie drop` (Position 11.4 | 48.2k Monthly Impressions)
+* **Optimized Meta Title:** `VIP Capsule Drops & Secret Vault Access | Exclusive Members First Pass`
+* **Optimized Meta Description:** `Skip the public waitlist. Unlock monthly curated seasonal capsules, size reservation locks, and 2 exclusive member bonus pieces. Explore the VIP Vault today.`
+* **Generated Schema (JSON-LD):**
+```json
+{{
+  "@context": "https://schema.org",
+  "@type": "ProductGroup",
+  "name": "{brand_config['brand_name']} VIP Capsule Drop",
+  "description": "Exclusive seasonal member capsule collection with reserved size allocation.",
+  "offers": {{
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "49.00",
+    "highPrice": "98.00"
+  }}
+}}
+```
+""")
+        else:
+            client = OpenAI(api_key=api_key)
+            with st.spinner("Agent generating programmatic metadata..."):
+                prompt = f"Generate search-intent Title Tag, Meta Description, and JSON-LD Schema for {brand_config['brand_name']} targeting striking distance keyword: 'vip membership capsule drop'."
+                res = client.chat.completions.create(model=model_choice, messages=[{"role": "user", "content": prompt}], temperature=0.7)
+                st.markdown(res.choices[0].message.content)
