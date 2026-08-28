@@ -199,9 +199,9 @@ with tab1:
     # 1. CORE EXECUTIVE STRATEGIC INSIGHT (RIGHT AT THE TOP)
     st.markdown("""
     <div class="hero-container" style="padding: 1.25rem 1.5rem; margin-top: 1rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
-        <h4 style="color: #f8fafc; margin-bottom: 0.35rem;">⚡ Core Strategic Takeaway:</h4>
+        <h4 style="color: #f8fafc; margin-bottom: 0.35rem;">💡 Quick Summary:</h4>
         <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
-            <em>"Tableau tells us <strong>what happened</strong> (revenue hit $498k). This technical engine proves <strong>why it happened</strong>: Scarcity-driven hooks filter for higher-quality VIP cohorts (+2.6x 6-month retention) and eliminate price-erosion discounting, expanding AOV from $68.50 to $84.20."</em>
+            <em>"Tableau tells us <strong>what happened</strong> (we made $498k). This tool shows <strong>why it happened</strong>: Selling exclusivity (like a private "VIP Vault") brings in higher-quality members who stick around 2.6x longer and spend more ($84 vs $68 average order)."</em>
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -238,14 +238,14 @@ with tab1:
         
         st.markdown("""
         <div class="glass-card" style="border-left: 4px solid #8b5cf6; background: #faf5ff; padding: 1.25rem;">
-            <h5 style="color: #6b21a8; margin-bottom: 0.5rem; font-size: 1rem;">🔬 Deep Strategic Attribution: WHY This Retention Gap Happens</h5>
+            <h5 style="color: #6b21a8; margin-bottom: 0.5rem; font-size: 1rem;">🔍 Why Members Stay vs. Why Bargain Hunters Leave</h5>
             <div style="font-size: 0.88rem; color: #3b0764; line-height: 1.6;">
-                <p><strong>1. Psychological Sunk-Cost & Identity Framing (The Exclusivity Curve):</strong><br>
-                When a customer joins via <em>'VIP Vault Access'</em>, their brain categorizes the transaction as gaining an <strong>insider privilege</strong> rather than buying a cheap product. This triggers status loyalty: members perceive cancelling as forfeiting earned priority access, sustaining a <strong>59.2% retention rate at Month 6</strong>.</p>
-                <p><strong>2. The 'Bargain Hunter Churn Cliff' (The Discount Line):</strong><br>
-                Direct discounts (<em>'50% Off'</em>) attract highly price-sensitive shoppers with zero brand affinity. Once the initial promotion ends, subsequent full-price or standard VIP rebills trigger immediate cancellation shock (47.9% churn in Month 2 alone).</p>
-                <p style="margin-bottom:0;"><strong>3. Unit Economics Impact:</strong><br>
-                The Exclusivity cohort achieves a <strong>2.6x higher Customer Lifetime Value (LTV)</strong> and pays back initial Customer Acquisition Cost (CAC) in 1.4 months vs. 5.8 months for the discount cohort.</p>
+                <p><strong>1. The VIP Exclusivity Curve (Purple Line):</strong><br>
+                When people join through exclusive access (like a private VIP drop), they feel like insiders getting special access. They stay loyal because they don't want to lose their member perks, keeping <strong>59.2% of members active after 6 months</strong>.</p>
+                <p><strong>2. The Discount Cliff (Red Line):</strong><br>
+                Big '50% Off' discounts attract one-time bargain hunters who only care about the sale. As soon as the first month ends, almost half of them cancel immediately (dropping to 22.8% by month 6).</p>
+                <p style="margin-bottom:0;"><strong>3. Better Business Results:</strong><br>
+                Exclusive members deliver <strong>2.6x higher lifetime value (LTV)</strong> and pay back marketing acquisition costs in just 1.4 months (compared to almost 6 months for discount shoppers).</p>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -274,14 +274,14 @@ with tab1:
         
         st.markdown("""
         <div class="glass-card" style="border-left: 4px solid #3b82f6; background: #eff6ff; padding: 1.25rem;">
-            <h5 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1rem;">🔬 Deep Behavioral Attribution: WHY Copy Alters Order Size</h5>
+            <h5 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1rem;">🔍 Why Certain Words Increase Order Sizes</h5>
             <div style="font-size: 0.88rem; color: #172554; line-height: 1.6;">
-                <p><strong>1. Cognitive Scarcity Triggers Multi-Item Bundling (+0.78 r):</strong><br>
-                Phrases like <em>'Reserved Size'</em> and <em>'Vault'</em> activate acute Fear-Of-Missing-Out (FOMO). Because customers believe pieces will sell out immediately, they add matching accessory sets and secondary colorways to a single order, elevating AOV from $68 to <strong>$84.20</strong>.</p>
-                <p><strong>2. Downward Price Anchoring (-0.74 r):</strong><br>
-                Terms like <em>'Lowest Price'</em> and <em>'Flash Sale'</em> prime the customer to seek the absolute cheapest item on the site to maximize percentage savings, suppressing Average Order Value down to $50.00.</p>
-                <p style="margin-bottom:0;"><strong>3. CRM Inbox Placement & Filter Protection:</strong><br>
-                Aggressive discount tokens trigger Gmail and Apple Mail promotional tab filters, whereas conversational VIP exclusivity tags consistently land in the primary inbox, driving <strong>2.8x higher Click-to-Open (CTOR) velocity</strong>.</p>
+                <p><strong>1. Scarcity Words Boost Basket Size (+$84 AOV):</strong><br>
+                Words like <em>'Reserved Size'</em> and <em>'Vault'</em> create urgency. Customers worry their size will sell out, so they buy matching sets and multiple colors in one go, pushing average orders up to <strong>$84.20</strong>.</p>
+                <p><strong>2. Discount Words Lower Order Value ($50 AOV):</strong><br>
+                Words like <em>'Lowest Price'</em> and <em>'Flash Sale'</em> encourage customers to hunt for the cheapest item just to get the deal, pulling average order values down to $50.00.</p>
+                <p style="margin-bottom:0;"><strong>3. Better Email Inbox Delivery:</strong><br>
+                Heavy discount words often get pushed straight to Gmail's spam or promo folder. Conversational VIP messages land directly in the primary inbox, getting <strong>almost 3x more clicks</strong>.</p>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -490,14 +490,14 @@ with tab2:
     # DEEP ANALYTICAL WHY BREAKDOWN CARD
     st.markdown(f"""
     <div class="glass-card" style="border-left: 4px solid #10b981; background: #f0fdf4; padding: 1.25rem; margin-top: 1rem;">
-        <h5 style="color: #065f46; margin-bottom: 0.5rem; font-size: 1rem;">🔬 Deep Analytical Breakdown: WHY Variant B Won (Our Strategic Diagnosis)</h5>
+        <h5 style="color: #065f46; margin-bottom: 0.5rem; font-size: 1rem;">🔍 Why Variant B Outperformed Variant A</h5>
         <div style="font-size: 0.88rem; color: #064e3b; line-height: 1.6;">
-            <p><strong>1. Cognitive Curiosity Gap vs. Spam Keyword Filtering:</strong><br>
-            Variant A's hook (<em>'FLASH SALE: 40% Off'</em>) triggers immediate promotional blindness and active spam-filtering. Variant B asks a provocative question (<em>'Are you still overpaying...?'</em>), opening a psychological loop that compels the user to click to verify their member status.</p>
-            <p><strong>2. Pull-Through Conversion Elasticity (+93.2% Lift):</strong><br>
-            Instead of demanding an immediate friction-heavy purchase (<em>'Click below to buy before midnight'</em>), Variant B frames the action as claiming earned benefits (<em>'Unlock custom-curated VIP drop with 2 exclusive free pieces'</em>), lowering psychological checkout resistance.</p>
-            <p style="margin-bottom: 0;"><strong>3. Margin Preservation:</strong><br>
-            Variant A sacrifices 40% product margin across the board. Variant B maintains full MSRP pricing while using low-cost bonus gift incentives, generating <strong>+3.7x higher net profit per delivered email</strong>.</p>
+            <p><strong>1. Asking a Question Beats Shouting a Sale:</strong><br>
+            Shouting '40% Off' looks like generic marketing noise that people ignore. Asking <em>'Are you still overpaying for your monthly wardrobe?'</em> sparks curiosity and makes readers open the email to see what they're missing.</p>
+            <p><strong>2. Less Pressure, More Clicks (+93.2% Lift):</strong><br>
+            Instead of pushy language like <em>'Click below to buy before midnight'</em>, Variant B highlights member perks like <em>'Unlock your custom drop with 2 free pieces'</em>, which feels rewarding instead of aggressive.</p>
+            <p style="margin-bottom: 0;"><strong>3. Protecting Profit Margins:</strong><br>
+            Variant A cuts prices by 40%, eating into profit. Variant B keeps standard pricing and adds an exclusive bonus gift, earning <strong>3.7x more profit per email sent</strong>.</p>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -573,7 +573,7 @@ with tab3:
     <div class="hero-container" style="padding: 1.25rem 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);">
         <h4 style="color: #f8fafc; margin-bottom: 0.35rem;">⚡ Case Study Objective: Proactive VIP Churn Prevention</h4>
         <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin-bottom: 0;">
-            <em>"Traditional CRM teams rely on static filters (e.g., 'purchased in last 30 days') which miss high-value VIPs who quietly drift away. This system runs <strong>Recency, Frequency, and Monetary (RFM) clustering</strong> on 3,000+ transaction logs to detect churn risk 45 days before the customer cancels their subscription."</em>
+            <em>"Most marketing teams only look at simple lists (like "people who bought recently"). That misses top-spending VIPs who are quietly losing interest. This tool automatically groups 3,000+ customer records to catch at-risk VIPs 45 days before they cancel so we can win them back."</em>
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -744,7 +744,7 @@ with tab4:
     <div class="hero-container" style="padding: 1.25rem 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);">
         <h4 style="color: #f8fafc; margin-bottom: 0.35rem;">⚡ Case Study Objective: Cross-Channel Orchestration vs. Channel Fatigue</h4>
         <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin-bottom: 0;">
-            <em>"Single-channel campaigns (Email only) underperform by up to 279% compared to coordinated cross-channel journeys. However, uncoordinated blasting across Email + SMS + Push spikes carrier opt-outs. This engine models <strong>channel synergy lift</strong> while enforcing <strong>algorithmic frequency capping and 24h cooling rules</strong>."</em>
+            <em>"Sending just email leaves money on the table—combining Email, Push, and In-App messages can almost triple conversions (+279%). But sending too many messages annoys customers. This tool balances multi-channel campaigns with automated rules (like a 24-hour break between messages) to protect your subscriber list."</em>
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -788,14 +788,14 @@ with tab4:
     # 3. THE DEEP "WHY": WHY COMBINING 3 CHANNELS OUTPERFORMS
     st.markdown("""
     <div class="glass-card" style="border-left: 4px solid #10b981; background: #f0fdf4; padding: 1.25rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
-        <h5 style="color: #065f46; margin-bottom: 0.5rem; font-size: 1rem;">🔬 Deep Channel Attribution: WHY the 3-Channel Mix (Email + Push + In-App) Wins</h5>
+        <h5 style="color: #065f46; margin-bottom: 0.5rem; font-size: 1rem;">🔍 Why Combining Email, Push & In-App Works Best</h5>
         <div style="font-size: 0.88rem; color: #064e3b; line-height: 1.6;">
-            <p><strong>1. Zero-Friction In-Session Intent (In-App Messaging):</strong><br>
-            When a VIP member opens the app/website, an In-App trigger displays their reserved size capsule without requiring an external click. In-App messages convert at <strong>3.4x higher velocity</strong> because the user is already in active shopping mode.</p>
-            <p><strong>2. Immediate Re-Engagement Trigger (Push Notification):</strong><br>
-            Push provides instant urgency (<em>'VIP Vault: Size lock expires in 2 hours'</em>), bringing dormant users back into the active session within 9 minutes.</p>
-            <p style="margin-bottom: 0;"><strong>3. Rich Visual Storytelling & Receipt Archival (Email):</strong><br>
-            Email delivers the editorial lookbook, styling guides, and order receipts, establishing long-term brand equity and driving <strong>61.4% 90-day retention</strong>.</p>
+            <p><strong>1. In-App Messages (Catching Users While They Shop):</strong><br>
+            When a customer is already browsing your website or app, showing them a quick banner or modal converts <strong>3.4x faster</strong> because they are already in the mood to buy.</p>
+            <p><strong>2. Push Notifications (Quick Reminders):</strong><br>
+            A timely push notification (like <em>"Your size lock expires in 2 hours"</em>) brings people straight back to the shop in minutes.</p>
+            <p style="margin-bottom: 0;"><strong>3. Email (Visual Lookbooks & Order Updates):</strong><br>
+            Email is perfect for sharing rich visuals, styling inspiration, and order details, keeping customers engaged for months.</p>
         </div>
     </div>
     """, unsafe_allow_html=True)
