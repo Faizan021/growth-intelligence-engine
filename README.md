@@ -12,7 +12,7 @@
 
 ## 🎯 Executive Overview: D2C & Lifecycle Architecture
 
-In high-growth D2C and subscription brands (like **Savage X Fenty**, **Gymshark**, **Whoop**), growth teams face three core operational bottlenecks:
+In high-growth D2C and subscription brands (like **Tier-1 D2C & VIP Subscription Apparel**, **Gymshark**, **Whoop**), growth teams face three core operational bottlenecks:
 1. **Analytical Latency:** Growth managers spend hours every Monday pulling raw numbers across Tableau, Shopify, and Klaviyo to explain *what* happened, leaving zero time to understand *why* it happened.
 2. **The "Discount Trap":** Blasting generic discount hooks (*"50% Off"*) generates short-term spikes but attracts transactional bargain-hunters who churn aggressively after Month 1.
 3. **Un-documented Experimentation:** 80% of email and SMS A/B tests fail to produce documented psychological learnings, causing teams to repeat low-converting copy.

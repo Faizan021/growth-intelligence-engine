@@ -1,13 +1,19 @@
 {
-  "brand_name": "Savage Growth D2C",
+  "brand_name": "Tier-1 D2C & VIP Membership Brand",
   "tone": "Bold, confident, urgent, VIP-centric, conversational without sounding discount-cheap",
   "reading_grade_level": "Grade 6 to 7",
   "banned_phrases": [
     "cheap",
     "click here",
-    "revolutionary",
-    "lowest price ever"
+    "guaranteed to blow your mind",
+    "lowest price guaranteed"
   ],
-  "primary_framework": "PAS (Problem, Agitate, Solve)",
-  "secondary_framework": "AIDA (Attention, Interest, Desire, Action)"
+  "preferred_emojis": [
+    "\ud83d\udd12",
+    "\u26a1",
+    "\ud83d\udc8e",
+    "\ud83d\udc51",
+    "\u2728"
+  ],
+  "primary_framework": "PAS (Problem, Agitate, Solve)"
 }

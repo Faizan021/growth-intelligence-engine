@@ -139,7 +139,7 @@ with st.sidebar:
             brand_config = json.load(f)
         st.json(brand_config)
     else:
-        brand_config = {"brand_name": "Savage Growth D2C", "tone": "Bold, confident, VIP-centric"}
+        brand_config = {"brand_name": "Tier-1 D2C & VIP Membership Brand", "tone": "Bold, confident, VIP-centric"}
 
 # Tabs Navigation
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
@@ -161,7 +161,7 @@ with tab1:
     dataset_choice = st.selectbox(
         "Choose Drop Scenario:",
         [
-            "Savage X Fenty: Multi-Year Seasonal Drops (V-Day, Summer, Cyber Week)",
+            "Global D2C Apparel: Multi-Year VIP Seasonal Drops (V-Day, Summer, Cyber Week)",
             "Beauty Brand: Annual Black Friday & VIP Loyalty Restocks",
             "Athleisure Brand: Limited Capsule Releases & Ambassador Drops"
         ]
