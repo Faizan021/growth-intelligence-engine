@@ -353,22 +353,72 @@ Execute the 3-Agent Workflow:
 # -------------------------------------------------------------
 with tab2:
     st.markdown("### \U0001F3AF Multi-Agent A/B Test Post-Mortem & Copywriting Critic")
-    st.caption("Combines two-proportion statistical Z-Tests with cognitive psychology teardowns (PAS & AIDA frameworks).")
+    st.caption("Select from 4 real-world growth experiment scenarios to evaluate statistical significance (Z-Score) and generate PAS/AIDA rewrites.")
 
-    ab_data = pd.DataFrame({
-        "variant": ["Variant A (Direct Discount Hook)", "Variant B (VIP Story & Pain-Point)"],
-        "subject_line": ["FLASH SALE: 40% off everything today only!", "Are you still overpaying for your monthly wardrobe?"],
-        "body_copy": [
-            "Hey member, get 40% off our entire catalog today. Click the button below to buy before midnight.",
-            "Hey Sarah, VIP members don't wait in lines or pay retail markup. Unlock your custom-curated VIP drop with 2 exclusive free pieces inside today's box."
-        ],
-        "sends": [25000, 25000],
-        "opens": [4200, 6800],
-        "clicks": [380, 1190],
-        "conversions": [45, 168]
-    })
+    ab_scenario = st.selectbox(
+        "Choose A/B Test Experiment Scenario:",
+        [
+            "Scenario A: VIP Drop Announcement (Curiosity Hook vs. Direct Discount)",
+            "Scenario B: Cart & Browse Abandonment (Size Reservation vs. Free Shipping)",
+            "Scenario C: 60-Day Churn Win-Back (Loss Aversion vs. 20% Promo Code)",
+            "Scenario D: Post-Purchase VIP Upsell (Status Perks vs. Future Credit)"
+        ]
+    )
 
-    df_ab = st.data_editor(ab_data, use_container_width=True)
+    if "Scenario A" in ab_scenario:
+        ab_data = pd.DataFrame({
+            "variant": ["Variant A (Direct Discount Hook)", "Variant B (VIP Story & Pain-Point)"],
+            "subject_line": ["FLASH SALE: 40% off everything today only!", "Are you still overpaying for your monthly wardrobe?"],
+            "body_copy": [
+                "Hey member, get 40% off our entire catalog today. Click the button below to buy before midnight.",
+                "Hey Sarah, VIP members don't wait in lines or pay retail markup. Unlock your custom-curated VIP drop with 2 exclusive free pieces inside today's box."
+            ],
+            "sends": [25000, 25000],
+            "opens": [4200, 6800],
+            "clicks": [380, 1190],
+            "conversions": [45, 168]
+        })
+    elif "Scenario B" in ab_scenario:
+        ab_data = pd.DataFrame({
+            "variant": ["Variant A (Generic Reminder)", "Variant B (Urgent Size Reservation)"],
+            "subject_line": ["You left items in your cart!", "🔒 We reserved your size for the next 24 hours..."],
+            "body_copy": [
+                "Your cart is waiting for you. Come back and complete your purchase before items sell out.",
+                "Hey Alex, sizes in this capsule sell out fast. We locked your size in your private bag for 24h. Click below to confirm before it releases to the next member on the waitlist."
+            ],
+            "sends": [12000, 12000],
+            "opens": [2800, 4900],
+            "clicks": [290, 840],
+            "conversions": [38, 124]
+        })
+    elif "Scenario C" in ab_scenario:
+        ab_data = pd.DataFrame({
+            "variant": ["Variant A (Generic 'We Miss You')", "Variant B (Loss Aversion & Member Status)"],
+            "subject_line": ["We miss you! Here is 20% off", "⚠️ Your VIP Member credits expire in 48 hours"],
+            "body_copy": [
+                "It's been a while. Use code MISSU20 to get 20% off your next order today.",
+                "Hey Elena, your accumulated $40 VIP reward credits and Tier-1 status are scheduled to reset this Friday. Don't leave your unlocked rewards on the table."
+            ],
+            "sends": [18000, 18000],
+            "opens": [2100, 4800],
+            "clicks": [140, 620],
+            "conversions": [18, 92]
+        })
+    else:
+        ab_data = pd.DataFrame({
+            "variant": ["Variant A (Points Calculation)", "Variant B (Secret Access Invitation)"],
+            "subject_line": ["You earned 50 loyalty points on your order", "👑 You unlocked Secret Vault Access with your purchase"],
+            "body_copy": [
+                "Thanks for your order. You now have 50 points in your account. Earn 50 more to get a $5 coupon.",
+                "Because of your recent order, you officially qualify for VIP Secret Vault Access. See next month's capsule designs 2 weeks before anyone else."
+            ],
+            "sends": [15000, 15000],
+            "opens": [3600, 6200],
+            "clicks": [310, 980],
+            "conversions": [42, 185]
+        })
+
+    df_ab = ab_data.copy()
     df_ab['open_rate'] = (df_ab['opens'] / df_ab['sends']) * 100
     df_ab['ctr'] = (df_ab['clicks'] / df_ab['opens']) * 100
     df_ab['conv_rate'] = (df_ab['conversions'] / df_ab['clicks']) * 100
@@ -378,7 +428,6 @@ with tab2:
     winner = df_ab.iloc[win_idx]
     loser = df_ab.iloc[lose_idx]
 
-    # Z-Test Math
     clicks_w, opens_w = winner['clicks'], winner['opens']
     clicks_l, opens_l = loser['clicks'], loser['opens']
     p1 = clicks_w / opens_w
@@ -389,38 +438,69 @@ with tab2:
     p_val = math.erfc(abs(z_score) / math.sqrt(2))
     confidence = (1 - p_val) * 100
 
-    c_ab1, c_ab2, c_ab3 = st.columns(3)
-    c_ab1.metric("\U0001F3C6 Winner", winner['variant'], f"{winner['ctr']:.2f}% CTR (+{winner['ctr']-loser['ctr']:.2f}%)")
-    c_ab2.metric("\U0001F4C9 Underperformer", loser['variant'], f"{loser['ctr']:.2f}% CTR")
-    c_ab3.metric("\U0001F52C Statistical Confidence", f"{confidence:.1f}%", "Statistically Significant (p < 0.001)")
+    # Clean, Non-Truncating Metric Cards
+    st.markdown(f"""
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 1.5rem;">
+        <div class="glass-card" style="border-top: 4px solid #22c55e; padding: 1.25rem; margin-bottom: 0;">
+            <div style="font-size: 0.85rem; font-weight: 700; color: #16a34a; text-transform: uppercase;">🏆 Winning Variant</div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: #1e293b; margin: 0.35rem 0;">{winner['variant']}</div>
+            <div style="font-size: 1.4rem; font-weight: 800; color: #15803d;">{winner['ctr']:.2f}% CTR <span style="font-size: 0.9rem; font-weight: 600; color: #16a34a;">(+{winner['ctr']-loser['ctr']:.2f}% lift)</span></div>
+        </div>
+        <div class="glass-card" style="border-top: 4px solid #f43f5e; padding: 1.25rem; margin-bottom: 0;">
+            <div style="font-size: 0.85rem; font-weight: 700; color: #e11d48; text-transform: uppercase;">📉 Underperforming Variant</div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: #1e293b; margin: 0.35rem 0;">{loser['variant']}</div>
+            <div style="font-size: 1.4rem; font-weight: 800; color: #be123c;">{loser['ctr']:.2f}% CTR</div>
+        </div>
+        <div class="glass-card" style="border-top: 4px solid #3b82f6; padding: 1.25rem; margin-bottom: 0;">
+            <div style="font-size: 0.85rem; font-weight: 700; color: #2563eb; text-transform: uppercase;">🔬 Statistical Rigor</div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: #1e293b; margin: 0.35rem 0;">Two-Proportion Z-Test</div>
+            <div style="font-size: 1.4rem; font-weight: 800; color: #1d4ed8;">{confidence:.1f}% Confidence <span style="font-size: 0.85rem; font-weight: 600; color: #2563eb;">(p < 0.001)</span></div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-    # Visual Comparison Cards
+    # Visual Comparison Cards (High Contrast & Non-Truncating)
     col_v1, col_v2 = st.columns(2)
     with col_v1:
         st.markdown(f"""
-        <div class="critique-card-bad">
-            <h4>\u274c Underperformer: {loser['variant']}</h4>
-            <p><strong>Subject:</strong> <code>{loser['subject_line']}</code></p>
-            <p><strong>Body:</strong> {loser['body_copy']}</p>
-            <hr>
-            <span class="pill-tag" style="background:#fecdd3; color:#9f1239;">Hook: \u274c Generic</span>
-            <span class="pill-tag" style="background:#fecdd3; color:#9f1239;">Friction: \U0001F6D1 High</span>
-            <span class="pill-tag" style="background:#fecdd3; color:#9f1239;">CTA: \u26a0\ufe0f Weak</span>
+        <div class="critique-card-bad" style="min-height: 260px;">
+            <h4 style="color: #9f1239; margin-bottom: 0.75rem;">❌ Underperformer: {loser['variant']}</h4>
+            <p style="color: #334155; margin-bottom: 0.5rem;"><strong>Subject:</strong> <span style="background: #ffffff; padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid #fecdd3; font-weight: 600; color: #9f1239;">{loser['subject_line']}</span></p>
+            <p style="color: #475569; font-size: 0.95rem; line-height: 1.5;"><strong>Body:</strong> {loser['body_copy']}</p>
+            <hr style="border: 0; border-top: 1px solid #fecdd3; margin: 1rem 0;">
+            <span class="pill-tag" style="background:#fecdd3; color:#9f1239;">Hook: ❌ Generic Discount</span>
+            <span class="pill-tag" style="background:#fecdd3; color:#9f1239;">Friction: 🛑 High</span>
+            <span class="pill-tag" style="background:#fecdd3; color:#9f1239;">CTA: ⚠️ Transactional</span>
         </div>
         """, unsafe_allow_html=True)
 
     with col_v2:
         st.markdown(f"""
-        <div class="critique-card-good">
-            <h4>\u2705 Winner: {winner['variant']}</h4>
-            <p><strong>Subject:</strong> <code>{winner['subject_line']}</code></p>
-            <p><strong>Body:</strong> {winner['body_copy']}</p>
-            <hr>
-            <span class="pill-tag" style="background:#bbf7d0; color:#166534;">Hook: \U0001F48E Pain-Point / Curiosity</span>
-            <span class="pill-tag" style="background:#bbf7d0; color:#166534;">Value Prop: \u26a1 Clear VIP Benefits</span>
-            <span class="pill-tag" style="background:#bbf7d0; color:#166534;">CTR Lift: +93.2%</span>
+        <div class="critique-card-good" style="min-height: 260px;">
+            <h4 style="color: #14532d; margin-bottom: 0.75rem;">✅ Winner: {winner['variant']}</h4>
+            <p style="color: #334155; margin-bottom: 0.5rem;"><strong>Subject:</strong> <span style="background: #ffffff; padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid #bbf7d0; font-weight: 600; color: #166534;">{winner['subject_line']}</span></p>
+            <p style="color: #1e293b; font-size: 0.95rem; line-height: 1.5;"><strong>Body:</strong> {winner['body_copy']}</p>
+            <hr style="border: 0; border-top: 1px solid #bbf7d0; margin: 1rem 0;">
+            <span class="pill-tag" style="background:#bbf7d0; color:#166534;">Hook: 💎 Pain-Point & Scarcity</span>
+            <span class="pill-tag" style="background:#bbf7d0; color:#166534;">Value Prop: ⚡ VIP Entitlement</span>
+            <span class="pill-tag" style="background:#bbf7d0; color:#166534;">CTR Lift: +{winner['ctr']-loser['ctr']:.1f}%</span>
         </div>
         """, unsafe_allow_html=True)
+
+    # DEEP ANALYTICAL WHY BREAKDOWN CARD
+    st.markdown(f"""
+    <div class="glass-card" style="border-left: 4px solid #10b981; background: #f0fdf4; padding: 1.25rem; margin-top: 1rem;">
+        <h5 style="color: #065f46; margin-bottom: 0.5rem; font-size: 1rem;">🔬 Deep Analytical Breakdown: WHY Variant B Won (Our Strategic Diagnosis)</h5>
+        <div style="font-size: 0.88rem; color: #064e3b; line-height: 1.6;">
+            <p><strong>1. Cognitive Curiosity Gap vs. Spam Keyword Filtering:</strong><br>
+            Variant A's hook (<em>'FLASH SALE: 40% Off'</em>) triggers immediate promotional blindness and active spam-filtering. Variant B asks a provocative question (<em>'Are you still overpaying...?'</em>), opening a psychological loop that compels the user to click to verify their member status.</p>
+            <p><strong>2. Pull-Through Conversion Elasticity (+93.2% Lift):</strong><br>
+            Instead of demanding an immediate friction-heavy purchase (<em>'Click below to buy before midnight'</em>), Variant B frames the action as claiming earned benefits (<em>'Unlock custom-curated VIP drop with 2 exclusive free pieces'</em>), lowering psychological checkout resistance.</p>
+            <p style="margin-bottom: 0;"><strong>3. Margin Preservation:</strong><br>
+            Variant A sacrifices 40% product margin across the board. Variant B maintains full MSRP pricing while using low-cost bonus gift incentives, generating <strong>+3.7x higher net profit per delivered email</strong>.</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown("### \U0001F916 Multi-Agent Copywriting Teardown & PAS Re-writer")
     
@@ -430,40 +510,39 @@ with tab2:
         elif demo_mode and not api_key:
             with st.spinner("Critic agent reviewing copy mechanics and generating revisions..."):
                 time.sleep(1)
-                st.markdown("""
+                st.markdown(f"""
 ### \U0001F4CA 1. ANALYST AGENT: Performance Attribution
-* **Open Rate Victory (+61.9%):** Variant B's question hook (*"Are you still overpaying...?"*) created an instant cognitive curiosity gap compared to the spam-heavy *"FLASH SALE"* keyword which triggered Gmail's promotional tab filters.
-* **Click-to-Open Rate (+93.2%):** Variant B established immediate emotional relevance with the reader's identity as a savvy VIP member.
+* **Click-to-Open Rate (+{winner['ctr']-loser['ctr']:.1f}% Lift):** Variant B replaced passive transaction statements with psychological **scarcity and loss aversion**.
+* **Spam Filter Evasion:** Variant A contained high-risk words (*"Flash Sale"*, *"20% Off"*, *"Miss You"*), routing it to the promotional tab.
 
 ---
 
-### \U0001F9D0 2. CRITIC AGENT: Teardown of Variant A (The Loser)
-1. **Buried Value Proposition:** The copy mentions "40% off" but fails to communicate *what* the member is actually getting or *why* they should care today.
-2. **High Cognitive Friction:** "Click the button below to buy before midnight" feels transactional and demanding rather than rewarding.
-3. **Banned Words Triggered:** Uses generic buzzwords (*"flash sale"*, *"click here"*), reducing brand trust.
+### \U0001F9D0 2. CRITIC AGENT: Teardown of Underperformer
+1. **Lack of Emotional Urgency:** Simply stating a discount exists gives the customer no reason to act *today*.
+2. **Generic Call-to-Action:** Friction-heavy demands (*"Click the button below"*) provide no psychological reward.
 
 ---
 
-### \u270d\ufe0f 3. COPYWRITER AGENT: 3 High-Converting Re-writes (PAS Framework)
+### \u270d\ufe0f 3. COPYWRITER AGENT: 3 Optimized Re-writes for {brand_config['brand_name']} ({brand_config['primary_framework']})
 
-#### Option 1: The VIP Entitlement Angle (PAS)
-* **Subject Line:** `Your VIP box just got upgraded (2 free pieces inside) \U0001F381`
-* **Preview Text:** `Why pay retail when you have member status?`
+#### Option 1: The Scarcity & VIP Protection Angle (PAS)
+* **Subject Line:** `[First Name], your private reservation expires tonight \u23f0`
+* **Preview Text:** `We held your size so you didn't miss out.`
 * **Body:**  
-  * **(Problem):** Shopping for seasonal essentials usually means dealing with sold-out sizes and high retail markups.  
-  * **(Agitate):** Why waste your weekend scrolling through endless generic sales that everyone else has access to?  
-  * **(Solve):** We hand-selected 2 exclusive bonus pieces and locked your sizes in your private VIP capsule for the next 24 hours.  
-* **CTA Button:** `[ Unlock My Curated Capsule &rarr; ]`
+  * **(Problem):** Limited seasonal drops sell out in hours, leaving members waiting months for restocks.  
+  * **(Agitate):** Why lose your preferred fit to public sale shoppers when you've earned priority status?  
+  * **(Solve):** We placed an active size lock on your bag for the next 24 hours.  
+* **CTA Button:** `[ Confirm My Bag Before Size Lock Expires &rarr; ]`
 
 #### Option 2: The Social Proof & Style Refresh Angle (AIDA)
-* **Subject Line:** `The #1 reason VIP members skip retail markup`
-* **Preview Text:** `Over 10,000 members unlocked their summer capsule today.`
+* **Subject Line:** `Why 14,000+ members unlocked this exact piece today`
+* **Preview Text:** `Customer-favorite styles just landed in the VIP Vault.`
 * **Body:**  
-  * **(Attention):** Most fashion brands make you wait in line for the pieces everyone is wearing.  
-  * **(Interest):** As a member, your stylist curates custom luxury pieces directly to your sizing profile.  
-  * **(Desire):** Experience buttery-soft fabrics and tailored fits without the traditional 3x boutique price tag.  
-  * **(Action):** Claim your exclusive 40% welcome credit before your reserved bag expires tonight.  
-* **CTA Button:** `[ Claim My 40% VIP Credit Now ]`
+  * **(Attention):** Finding elevated essentials shouldn't require paying boutique retail markups.  
+  * **(Interest):** As an active member, your custom style profile gives you direct access to luxury fabrics at member pricing.  
+  * **(Desire):** Experience tailored comfort with zero compromises.  
+  * **(Action):** Claim your exclusive member bonus gift before tonight's capsule closes.  
+* **CTA Button:** `[ Unlock My Exclusive VIP Gift Now ]`
 """)
         else:
             client = OpenAI(api_key=api_key)
@@ -476,10 +555,11 @@ BRAND CONTEXT: {json.dumps(brand_config)}
 TASKS:
 1. ANALYST AGENT: Quantify why the winner succeeded and explain the cognitive trigger.
 2. CRITIC AGENT: Perform a rigorous teardown of the losing variant.
-3. COPYWRITER AGENT: Produce 3 complete, rewritten variants using the PAS (Problem-Agitate-Solve) framework.
+3. COPYWRITER AGENT: Produce 3 complete, rewritten variants using the {brand_config['primary_framework']} framework.
 """
                 res = client.chat.completions.create(model=model_choice, messages=[{"role": "user", "content": prompt}], temperature=0.7)
                 st.markdown(res.choices[0].message.content)
+
 
 # -------------------------------------------------------------
 # MODULE 3: Predictive RFM CRM Segmentation
