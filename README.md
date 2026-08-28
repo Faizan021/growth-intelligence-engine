@@ -1,11 +1,11 @@
 # ⚡ Fintech Crypto CRM & Lifecycle Automation Engine
-### Open-Source Lifecycle Marketing Architecture | Regulated European Wealthtech & Digital Assets
+### Standalone Lifecycle Marketing Operating System | Regulated European Wealthtech & Digital Assets
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://growth-intelligence-engine.streamlit.app)
 [![Branch: fintech-crypto-crm](https://img.shields.io/badge/Branch-fintech--crypto--crm-blue.svg)](https://github.com/Faizan021/growth-intelligence-engine/tree/fintech-crypto-crm)
-[![Open Source: Dittofeed & Twenty CRM](https://img.shields.io/badge/Stack-Dittofeed%20%7C%20Twenty%20CRM%20%7C%20Novu-green.svg)](https://github.com/twentyhq/twenty)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> **Fintech Lifecycle Architecture:** A production-grade lifecycle automation system modeled for **European Regulated Crypto Exchanges & Wealthtech Apps**. Bridges open-source CRM infrastructure ([Twenty CRM](https://github.com/twentyhq/twenty), [Dittofeed](https://github.com/dittofeed/dittofeed), [Novu](https://github.com/novuhq/novu)) with BaFin/GDPR-compliant multi-channel customer journeys across 10 critical lifecycle stages.
+> **Fintech Lifecycle Architecture:** A production-grade lifecycle automation system modeled for **European Regulated Crypto Exchanges & Wealthtech Apps**. Fully written in Python to automate BaFin/GDPR-compliant multi-channel customer journeys across 10 critical lifecycle stages.
 
 ---
 
@@ -48,7 +48,7 @@ graph TD
 ---
 
 ### 📂 4. 📉 Market Volatility & "Buy the Dip" Price Alerts
-* **The Challenge:** Crypto market swings ($\pm 5-10\%$) drive massive trading surges, but uncoordinated alerts cause push uninstalls.
+* **The Challenge:** Crypto market swings (±5% to ±10%) drive massive trading surges, but uncoordinated alerts cause push uninstalls.
 * **The Solution:** Asset-relevance filtering (only alert for held/watched coins) + strict **24h cooling rules (max 2 pushes/day)**.
 * **Business Impact:** **+192% trading reactivation velocity** with **< 0.15% opt-outs**.
 
@@ -81,18 +81,19 @@ graph TD
 ---
 
 ### 📂 10. 👑 High-Volume "Whale" VIP Management (>€25k Volume)
-* **The Solution:** Automatic segmentation flagging users with >€25k quarterly volume for reduced trading spread rebates and dedicated VIP concierge support.
+* **The Solution:** Automatic segmentation flagging users with >€25k quarterly volume for reduced trading spread rebates and dedicated VIP concierge execution.
 
 ---
 
-## 🛠️ Open-Source CRM Architecture
+## 🛠️ Native Python Architecture
 
-| Tool | Purpose | Open-Source Repository |
+| Module | Purpose | Built With |
 | :--- | :--- | :--- |
-| **Twenty CRM** | Custom trader objects, KYC statuses, VIP tiers | [`github.com/twentyhq/twenty`](https://github.com/twentyhq/twenty) |
-| **Dittofeed** | Self-hosted event-driven lifecycle marketing & GDPR compliance | [`github.com/dittofeed/dittofeed`](https://github.com/dittofeed/dittofeed) |
-| **Novu** | Multi-channel notification infrastructure (Push, In-App, SMS) | [`github.com/novuhq/novu`](https://github.com/novuhq/novu) |
-| **Formbricks** | In-app micro-surveys for KYC drop-off diagnostics | [`github.com/formbricks/formbricks`](https://github.com/formbricks/formbricks) |
+| **KYC Funnel Engine** | Drop-off recovery and cross-device webcam routing | Python, Funnel Analytics |
+| **Sparplan DCA Simulator** | Backtest modeling and recurring habit adoption | Scikit-Learn, Habit Modeling |
+| **Volatility Guard** | Real-time market alert rules and frequency capping | Python Event Engine, 24h Cooldowns |
+| **Trader RFM Engine** | Segregates Whales vs. Casual traders | Scikit-Learn K-Means & Quantiles |
+| **Dynamic Webhook Engine** | Live portfolio balance and price personalization | Liquid Template Syntax & REST APIs |
 
 ---
 

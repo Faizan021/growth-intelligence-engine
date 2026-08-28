@@ -81,7 +81,7 @@ st.markdown("""
 # Header Banner
 st.markdown("""
 <div class="hero-container">
-    <div class="status-badge">\U0001F7E2 Open-Source Fintech & Crypto Lifecycle Architecture &bull; Braze / Dittofeed &bull; Twenty CRM</div>
+    <div class="status-badge">\U0001F7E2 Open-Source Fintech & Crypto Lifecycle Architecture &bull; Native Lifecycle Automation OS &bull; BaFin & GDPR Compliant</div>
     <div class="hero-title">\U0001F4B0 Fintech & Crypto CRM Lifecycle Operating System</div>
     <div class="hero-subtitle">
         An open-source lifecycle automation architecture for European regulated crypto platforms and wealthtech apps. Automating 10 critical lifecycle stages: KYC onboarding recovery, recurring 'Sparplan' adoption, volatility alerts, staking updates, and BaFin/GDPR deliverability governance.
@@ -112,7 +112,7 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "\U0001F4A5 3. Volatility Alerts & Staking Yields (Use Cases 4 & 5)",
     "\U0001F465 4. Trader RFM & Whale VIP Hub (Use Cases 9 & 10)",
     "\U0001F4C4 5. Tax Reports & Feature Drops (Use Cases 7 & 8)",
-    "\U0001F517 6. Open-Source CRM & Liquid Engine (Dittofeed & Twenty)"
+    "\U0001F517 6. Native Webhook & Event Dispatch Engine"
 ])
 
 # -------------------------------------------------------------
@@ -309,19 +309,19 @@ with tab5:
         """, unsafe_allow_html=True)
 
 # -------------------------------------------------------------
-# TAB 6: Open-Source Architecture (Dittofeed & Twenty CRM)
+# TAB 6: Native Webhook & Event Dispatch Engine
 # -------------------------------------------------------------
 with tab6:
     st.markdown("### \U0001F517 Open-Source CRM Architecture & Liquid Templating Engine")
-    st.caption("Live integration schemas for open-source self-hosted platforms (Dittofeed, Twenty CRM, Novu, Formbricks).")
+    st.caption("Real-time webhook schemas and dynamic Liquid templating for enterprise CRM platforms.")
 
     st.markdown("""
     <div class="glass-card" style="border-left: 4px solid #0f766e; background: #f0fdfa; padding: 1.25rem;">
-        <h5 style="color: #0f766e; margin-bottom: 0.5rem; font-size: 1rem;">🐙 Open-Source Stack Powering This Architecture:</h5>
+        <h5 style="color: #0f766e; margin-bottom: 0.5rem; font-size: 1rem;">⚙️ Built-In Native Lifecycle Architecture:</h5>
         <ul style="font-size: 0.88rem; color: #134e4a; line-height: 1.6; margin-bottom: 0;">
-            <li><strong>Dittofeed (<code>github.com/dittofeed/dittofeed</code>):</strong> Self-hosted Braze alternative ensuring zero PII customer data leaves the regulated EU VPC.</li>
-            <li><strong>Twenty CRM (<code>github.com/twentyhq/twenty</code>):</strong> GraphQL-first CRM for managing trader accounts, KYC statuses, and VIP tiers.</li>
-            <li><strong>Novu (<code>github.com/novuhq/novu</code>):</strong> Multi-channel push and in-app notification infrastructure for real-time volatility alerts.</li>
+            <li><strong>Native Event Dispatcher:</strong> Triggers sub-second multi-channel notifications across Push, In-App, and Email.</li>
+            <li><strong>BaFin & GDPR Safe:</strong> Built to operate inside a regulated European private cloud (VPC) with zero external data leaks.</li>
+            <li><strong>Dynamic Liquid Engine:</strong> Formats real-time portfolio data and live market prices with automatic fallbacks.</li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
