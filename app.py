@@ -158,62 +158,55 @@ with tab1:
     st.markdown("### \U0001F4CA D2C Tableau Campaign Ingestion & YoY Variance Engine")
     st.caption("Benchmark dataset modeled after high-velocity D2C seasonal drops (Valentine's, Summer Restock, Cyber Week).")
     
-    d2c_file = "data/d2c_tableau_drop_data.csv"
-    df_d2c = pd.read_csv(d2c_file, encoding="utf-8") if os.path.exists(d2c_file) else pd.DataFrame()
+    dataset_choice = st.selectbox(
+        "Choose Drop Scenario:",
+        [
+            "Savage X Fenty: Multi-Year Seasonal Drops (V-Day, Summer, Cyber Week)",
+            "Beauty Brand: Annual Black Friday & VIP Loyalty Restocks",
+            "Athleisure Brand: Limited Capsule Releases & Ambassador Drops"
+        ]
+    )
+    
+    if "Savage" in dataset_choice:
+        df_d2c = pd.DataFrame([
+            {"campaign_name": "V-Day VIP Drop 2025", "period": "2025-Q1", "channel": "Email + SMS", "vip_signups": 1250, "orders": 3800, "revenue": 260300, "aov": 68.50, "unsub_rate": "0.85%", "hook": "50% Off Everything VIP Intro Sale"},
+            {"campaign_name": "V-Day VIP Drop 2026", "period": "2026-Q1", "channel": "Email + SMS", "vip_signups": 2380, "orders": 5920, "revenue": 498464, "aov": 84.20, "unsub_rate": "0.32%", "hook": "VIP Vault Unlocked: Your Secret Drop is Live"},
+            {"campaign_name": "Summer Restock 2025", "period": "2025-Q2", "channel": "Email", "vip_signups": 890, "orders": 2100, "revenue": 130200, "aov": 62.00, "unsub_rate": "0.92%", "hook": "Restock Alert: Favorites Back in Stock"},
+            {"campaign_name": "Summer Restock 2026", "period": "2026-Q2", "channel": "Email + SMS", "vip_signups": 1640, "orders": 3650, "revenue": 290175, "aov": 79.50, "unsub_rate": "0.41%", "hook": "VIP Member Exclusive: New Colorways Added"},
+            {"campaign_name": "Cyber Week 2024", "period": "2024-Q4", "channel": "Email + SMS", "vip_signups": 3100, "orders": 8200, "revenue": 615000, "aov": 75.00, "unsub_rate": "1.10%", "hook": "Biggest Sale of the Year 60% Off"},
+            {"campaign_name": "Cyber Week 2025", "period": "2025-Q4", "channel": "Email + SMS", "vip_signups": 4850, "orders": 11400, "revenue": 1048800, "aov": 92.00, "unsub_rate": "0.48%", "hook": "VIP First Pass: Shop 24h Before Public"}
+        ])
+    elif "Beauty" in dataset_choice:
+        df_d2c = pd.DataFrame([
+            {"campaign_name": "BFCM 2024 (Blast)", "period": "2024-Q4", "channel": "Email", "vip_signups": 1100, "orders": 4200, "revenue": 210000, "aov": 50.00, "unsub_rate": "1.40%", "hook": "Storewide 30% Off Everything Today"},
+            {"campaign_name": "BFCM 2025 (Tiered VIP)", "period": "2025-Q4", "channel": "Email + SMS", "vip_signups": 2900, "orders": 7800, "revenue": 561600, "aov": 72.00, "unsub_rate": "0.45%", "hook": "VIP Secret Glow Box: Double Points + Deluxe Gift"},
+            {"campaign_name": "Spring Skincare Drop '25", "period": "2025-Q1", "channel": "Email", "vip_signups": 750, "orders": 1900, "revenue": 95000, "aov": 50.00, "unsub_rate": "0.80%", "hook": "New Spring Collection Now Live"},
+            {"campaign_name": "Spring Skincare Drop '26", "period": "2026-Q1", "channel": "Email + SMS", "vip_signups": 1820, "orders": 3900, "revenue": 265200, "aov": 68.00, "unsub_rate": "0.38%", "hook": "Formulated for Your Skin Profile: VIP Early Pass"}
+        ])
+    else:
+        df_d2c = pd.DataFrame([
+            {"campaign_name": "Seamless Drop 2025", "period": "2025-Q1", "channel": "Email", "vip_signups": 1500, "orders": 4500, "revenue": 315000, "aov": 70.00, "unsub_rate": "0.95%", "hook": "Shop The New Seamless Sets"},
+            {"campaign_name": "Seamless Drop 2026", "period": "2026-Q1", "channel": "Email + SMS", "vip_signups": 3200, "orders": 7900, "revenue": 695200, "aov": 88.00, "unsub_rate": "0.29%", "hook": "Athlete Priority Access: Your Size is Reserved"}
+        ])
 
-    # KPI Top Metric Cards
+    # Top KPI Metrics
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("V-Day Drop '26 Revenue", "$498,464", "+91.5% YoY Lift", delta_color="normal")
-    c2.metric("VIP Member Signups", "2,380 members", "+90.4% YoY Surge", delta_color="normal")
-    c3.metric("Average Order Value (AOV)", "$84.20", "+22.9% YoY Expansion", delta_color="normal")
-    c4.metric("Unsubscribe Rate", "0.32%", "-62.3% YoY Improvement", delta_color="inverse")
+    c1.metric("Top Drop Revenue", f"${df_d2c['revenue'].max():,.0f}", "+91.5% YoY Peak Lift")
+    c2.metric("Peak VIP Acquisition", f"{df_d2c['vip_signups'].max():,d} signups", "+90.4% YoY Surge")
+    c3.metric("Max AOV Realized", f"${df_d2c['aov'].max():.2f}", "+22.9% Expansion")
+    c4.metric("Lowest Opt-Out Rate", f"{df_d2c['unsub_rate'].min()}", "-62.3% List Protection")
 
-    st.markdown("<br>", unsafe_allow_html=True)
-    
-    # Interactive Plotly Chart: Revenue & VIP Signups YoY
-    col_chart, col_table = st.columns([3, 2])
-    
-    with col_chart:
-        fig = go.Figure()
-        fig.add_trace(go.Bar(
-            x=df_d2c['campaign_name'],
-            y=df_d2c['revenue'],
-            name='Revenue ($)',
-            marker_color=['#94a3b8', '#6366f1', '#94a3b8', '#8b5cf6', '#94a3b8', '#ec4899'],
-            text=df_d2c['revenue'].apply(lambda x: f"${x:,.0f}"),
-            textposition='auto',
-        ))
-        fig.add_trace(go.Scatter(
-            x=df_d2c['campaign_name'],
-            y=df_d2c['vip_signups'] * 100,
-            name='VIP Signups (Scaled)',
-            mode='lines+markers',
-            line=dict(color='#f59e0b', width=3),
-            marker=dict(size=8)
-        ))
-        fig.update_layout(
-            title="Drop Revenue & VIP Acquisition Comparison (2024 - 2026)",
-            template="plotly_white",
-            margin=dict(l=20, r=20, t=40, b=20),
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
-        )
-        st.plotly_chart(fig, use_container_width=True)
-        
-    with col_table:
-        st.markdown("#### \U0001F4CB Raw Drop Records")
-        st.dataframe(df_d2c[['campaign_name', 'channel', 'vip_signups', 'revenue', 'aov', 'unsubscribe_rate']], use_container_width=True, height=340)
+    # 1. CORE EXECUTIVE STRATEGIC INSIGHT (RIGHT AT THE TOP)
+    st.markdown("""
+    <div class="hero-container" style="padding: 1.25rem 1.5rem; margin-top: 1rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
+        <h4 style="color: #f8fafc; margin-bottom: 0.35rem;">⚡ Core Strategic Takeaway:</h4>
+        <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
+            <em>"Tableau tells us <strong>what happened</strong> (revenue hit $498k). This technical engine proves <strong>why it happened</strong>: Scarcity-driven hooks filter for higher-quality VIP cohorts (+2.6x 6-month retention) and eliminate price-erosion discounting, expanding AOV from $68.50 to $84.20."</em>
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.divider()
-
-    
-    
-    # -------------------------------------------------------------
-    # ADVANCED TECHNICAL HOOK ATTRIBUTION (DATA SCIENCE & ELASTICITY)
-    # -------------------------------------------------------------
-    st.divider()
-    st.markdown("### \U0001F52C Technical Hook Attribution & Elasticity Data Engine")
-    st.caption("How to mathematically interpret the data: Connecting Creative Copy Hooks to 6-Month VIP Cohort Decay and Order Basket Size (AOV).")
-
+    # 2. THE 2 CORE DATA SCIENCE CHARTS (AT THE TOP)
     col_h1, col_h2 = st.columns([1, 1])
 
     with col_h1:
@@ -237,17 +230,17 @@ with tab1:
             title="Cohort Retention Rate (%): Exclusivity vs. Discount",
             yaxis_title="Active VIP Retention (%)",
             template="plotly_white",
-            margin=dict(l=20, r=20, t=60, b=20),
+            margin=dict(l=20, r=20, t=50, b=20),
             legend=dict(orientation="h", yanchor="top", y=-0.15, xanchor="center", x=0.5)
         )
         st.plotly_chart(fig_cohort, use_container_width=True)
         
         st.markdown("""
-        <div class="glass-card" style="border-left: 4px solid #8b5cf6; background: #faf5ff;">
-            <h5 style="color: #6b21a8; margin-bottom: 0.5rem;">💡 How to Interpret This Chart:</h5>
-            <ul style="margin-bottom: 0; font-size: 0.9rem; color: #4c1d95;">
-                <li><strong>The 'Discount Cliff' (Red Line):</strong> Discount hooks attract bargain hunters who churn aggressively after Month 1 (drops from 100% → 52% → 22.8%).</li>
-                <li><strong>The 'VIP Loyalty Curve' (Purple Line):</strong> Exclusivity hooks filter for high-intent members, maintaining <strong>59.2% retention (2.6x higher LTV)</strong> at Month 6.</li>
+        <div class="glass-card" style="border-left: 4px solid #8b5cf6; background: #faf5ff; padding: 1rem;">
+            <h5 style="color: #6b21a8; margin-bottom: 0.35rem; font-size: 0.95rem;">💡 Data Interpretation:</h5>
+            <ul style="margin-bottom: 0; font-size: 0.85rem; color: #4c1d95; line-height: 1.5;">
+                <li><strong>The Discount Cliff (Red):</strong> Discount hooks attract bargain hunters who churn aggressively after Month 1 (drops to 22.8%).</li>
+                <li><strong>The VIP Loyalty Curve (Purple):</strong> Exclusivity hooks filter for high-intent members, maintaining <strong>59.2% retention (2.6x higher LTV)</strong>.</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -270,30 +263,23 @@ with tab1:
             title="Pearson Correlation (r): Hook Words vs. Basket Size",
             xaxis_title="Correlation with Order AOV ($)",
             template="plotly_white",
-            margin=dict(l=20, r=20, t=60, b=20)
+            margin=dict(l=20, r=20, t=50, b=20)
         )
         st.plotly_chart(fig_nlp, use_container_width=True)
         
         st.markdown("""
-        <div class="glass-card" style="border-left: 4px solid #3b82f6; background: #eff6ff;">
-            <h5 style="color: #1e40af; margin-bottom: 0.5rem;">💡 How to Interpret This Chart:</h5>
-            <ul style="margin-bottom: 0; font-size: 0.9rem; color: #1e3a8a;">
-                <li><strong>Positive Correlation (+0.78 r):</strong> Words framing scarcity (<em>'Vault'</em>, <em>'Reserved Size'</em>) trigger urgency to build larger multi-item baskets ($84+ AOV).</li>
-                <li><strong>Negative Correlation (-0.74 r):</strong> Discount words (<em>'Lowest Price'</em>, <em>'Flash Sale'</em>) psychologically anchor the buyer to spend the bare minimum ($50 AOV).</li>
+        <div class="glass-card" style="border-left: 4px solid #3b82f6; background: #eff6ff; padding: 1rem;">
+            <h5 style="color: #1e40af; margin-bottom: 0.35rem; font-size: 0.95rem;">💡 Data Interpretation:</h5>
+            <ul style="margin-bottom: 0; font-size: 0.85rem; color: #1e3a8a; line-height: 1.5;">
+                <li><strong>Positive (+0.78 r):</strong> Scarcity words (<em>'Vault'</em>, <em>'Reserved Size'</em>) trigger urgency for larger multi-item baskets ($84+ AOV).</li>
+                <li><strong>Negative (-0.74 r):</strong> Discount words (<em>'Lowest Price'</em>, <em>'Flash Sale'</em>) anchor buyers to spend the bare minimum ($50 AOV).</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
 
-    st.markdown("""
-    <div class="hero-container" style="padding: 1.5rem; margin-top: 1rem; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
-        <h4 style="color: #f8fafc; margin-bottom: 0.5rem;">🎯 Executive Growth Takeaway for Hiring Managers:</h4>
-        <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
-            <em>"Tableau tells us <strong>what happened</strong> (revenue was $498k). This technical engine proves <strong>why it happened</strong>: Scarcity-driven hooks filter for higher-quality VIP cohorts (+2.6x 6-month retention) and eliminate price-erosion discounting, expanding AOV from $68.50 to $84.20."</em>
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.divider()
 
-
+    # 3. INTERACTIVE MULTI-AGENT DROP POST-MORTEM
     st.markdown("### \U0001F916 Multi-Agent Drop Post-Mortem & Creative Hook Engine")
     
     if st.button("\U0001F680 Execute 3-Agent YoY Post-Mortem", key="btn_m1", type="primary"):
@@ -302,26 +288,26 @@ with tab1:
         elif demo_mode and not api_key:
             with st.spinner("Agents analyzing Tableau dataset, calculating variance, and drafting winning hooks..."):
                 time.sleep(1)
-                st.markdown("""
+                st.markdown(f"""
 ### \U0001F916 AGENT 1: TABLEAU TRANSLATOR (Executive KPIs)
-* **Revenue Acceleration:** Total drop revenue surged from **$260.3k (2025)** to **$498.5k (2026)** (+91.5% YoY), demonstrating explosive compounding on high-intent promotional drops.
-* **AOV Expansion:** Average Order Value expanded by **+$15.70 (+22.9%)** driven by VIP exclusive multi-item bundling mechanics.
-* **List Health Preservation:** Opt-out rates dropped by **62.3%**, showing that higher frequency paired with VIP exclusivity increases engagement without fatiguing the audience.
+* **Revenue Acceleration:** Across the multi-year cycle, revenue expanded by **+91.5% YoY**, proving that scheduled seasonal drops generate predictable compounding when coupled with VIP scarcity.
+* **Basket Expansion (AOV):** AOV grew from **$68.50 to $84.20 (+22.9%)** via multi-item VIP bundle incentives.
+* **Audience Health:** Opt-out rate plummeted to **0.32% (-62.3% YoY)** despite adding an extra SMS touchpoint.
 
 ---
 
 ### \U0001F916 AGENT 2: YoY & SEASONALITY STATISTICIAN
-* **Direct Discount vs. Exclusivity Elasticity:** In 2025, the brand pushed *"50% Off Everything VIP Intro Sale"*, leading to price anchoring and margin compression. In 2026, pivoting to the *"VIP Vault Unlocked: Secret Drop"* hook generated **+90.4% more VIP signups** at a **22.9% higher basket size**.
-* **Seasonal Compounding:** Cyber Week 2025 crossed **$1.04M** (+70.5% YoY), proving that early VIP 24h-access passes generate immense FOMO and urgency before public sale launch.
+* **Elasticity Comparison:** Direct discount promotions (e.g. *50% Off Everything*) created brand erosion and lower AOV. The *VIP Vault Exclusivity* hook yielded **+90.4% more VIP acquisitions** without degrading product value.
+* **Channel Synergy:** Combining Email (rich visual lookbook) with SMS (urgent 24h pass countdown) boosted 1st-hour conversion velocity by 3.8x.
 
 ---
 
 ### \U0001F916 AGENT 3: CREATIVE HOOK & VIP LIFECYCLE AGENT
-* **The Core Cognitive Trigger:** Shifted messaging from *Transactional Value (Discount)* to *Status Entitlement (Exclusivity & Curiosity Gap)*.
+* **Psychological Trigger:** Shifted messaging from *Price Reduction* to *Curated Entitlement*.
 
-#### \U0001F4F1 High-Converting SMS Variations for Upcoming Q3 Drop:
-1. `\U0001F512 VIP VAULT: Your private Q3 drop is officially unlocked, [First Name]. 2 free limited edition pieces reserved in your bag for 24h: [Link] (Txt STOP to opt out)`
-2. `\U0001F525 Secret Restock: Members get 1st pass on the sold-out Lace Capsule before public launch tomorrow at 9 AM: [Link]`
+#### \U0001F4F1 High-Converting SMS Variations for {brand_config['brand_name']}:
+1. `\U0001F512 VIP VAULT: Your private Q3 drop is officially unlocked, [First Name]. 2 bonus pieces reserved in your bag for 24h: [Link] (Txt STOP to opt out)`
+2. `\U0001F525 Secret Restock: Members get 1st pass on the sold-out capsule before public launch tomorrow at 9 AM: [Link]`
 3. `\U0001F451 You're on the list. Exclusive VIP early access starts right now. Sizes go fast: [Link]`
 
 #### \u2709\ufe0f High-Converting Email Sequences:
@@ -346,6 +332,11 @@ Execute the 3-Agent Workflow:
 """
                 res = client.chat.completions.create(model=model_choice, messages=[{"role": "user", "content": prompt}], temperature=0.7)
                 st.markdown(res.choices[0].message.content)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    with st.expander("📋 View Raw Tableau Drop Records & Historical Comparisons"):
+        st.dataframe(df_d2c, use_container_width=True)
+
 
 # -------------------------------------------------------------
 # MODULE 2: AI Campaign Post-Mortem & Copy Critic

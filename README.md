@@ -10,7 +10,7 @@
 
 ---
 
-## 🎯 Executive Overview for Growth Directors & Hiring Leads
+## 🎯 Executive Overview: D2C & Lifecycle Architecture
 
 In high-growth D2C and subscription brands (like **Savage X Fenty**, **Gymshark**, **Whoop**), growth teams face three core operational bottlenecks:
 1. **Analytical Latency:** Growth managers spend hours every Monday pulling raw numbers across Tableau, Shopify, and Klaviyo to explain *what* happened, leaving zero time to understand *why* it happened.
