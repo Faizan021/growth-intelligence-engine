@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
 import streamlit as st
 import pandas as pd
 import numpy as np
 import json
 import os
+import math
 from datetime import datetime
 from openai import OpenAI
 
@@ -11,21 +13,14 @@ try:
     import pygwalker as pyg
     import streamlit.components.v1 as components
     PYGWALKER_AVAILABLE = True
-except ImportError:
+except Exception:
     PYGWALKER_AVAILABLE = False
 
 try:
-    from scipy import stats
+    from scipy.stats import norm
     SCIPY_AVAILABLE = True
-except ImportError:
+except Exception:
     SCIPY_AVAILABLE = False
-
-try:
-    from sklearn.preprocessing import StandardScaler
-    from sklearn.cluster import KMeans
-    SKLEARN_AVAILABLE = True
-except ImportError:
-    SKLEARN_AVAILABLE = False
 
 st.set_page_config(
     page_title="Growth Intelligence Engine | AI CRM & Lifecycle Platform",
@@ -47,13 +42,6 @@ st.markdown("""
         color: #64748b;
         margin-bottom: 1.5rem;
     }
-    .metric-container {
-        background-color: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 1rem;
-        margin-bottom: 1rem;
-    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -69,7 +57,7 @@ with st.sidebar:
     st.divider()
     st.subheader("?? Brand Voice Guidelines")
     if os.path.exists("config/brand_voice.json"):
-        with open("config/brand_voice.json") as f:
+        with open("config/brand_voice.json", encoding="utf-8") as f:
             brand_config = json.load(f)
         st.json(brand_config)
     else:
@@ -92,7 +80,7 @@ with tab1:
     
     d2c_file = "data/d2c_tableau_drop_data.csv"
     if os.path.exists(d2c_file):
-        df_d2c = pd.read_csv(d2c_file)
+        df_d2c = pd.read_csv(d2c_file, encoding="utf-8")
     else:
         df_d2c = pd.DataFrame()
 
@@ -116,8 +104,11 @@ with tab1:
     if PYGWALKER_AVAILABLE and not df_d2c.empty:
         with st.expander("?? Open Self-Service Tableau Visualizer (PyGWalker)"):
             st.info("Drag and drop fields (e.g. `campaign_name` on X, `revenue` and `vip_signups` on Y) to explore data without code.")
-            pyg_html = pyg.to_html(df_d2c)
-            components.html(pyg_html, height=600, scrolling=True)
+            try:
+                pyg_html = pyg.to_html(df_d2c)
+                components.html(pyg_html, height=600, scrolling=True)
+            except Exception as e:
+                st.warning(f"PyGWalker visualizer note: {e}")
 
     st.subheader("?? Execute Multi-Agent Drop Post-Mortem")
     if st.button("?? Run 3-Agent Tableau & Hook Analysis", key="btn_m1"):
@@ -166,7 +157,7 @@ with tab2:
         "subject_line": ["FLASH SALE: 40% off everything today only!", "Are you still overpaying for your monthly wardrobe?"],
         "body_copy": [
             "Hey member, get 40% off our entire catalog today. Click the button below to buy before midnight.",
-            "Hey Sarah, VIP members don\'t wait in lines or pay retail markup. Unlock your custom-curated VIP drop with 2 exclusive free pieces inside today\'s box."
+            "Hey Sarah, VIP members don't wait in lines or pay retail markup. Unlock your custom-curated VIP drop with 2 exclusive free pieces inside today's box."
         ],
         "sends": [25000, 25000],
         "opens": [4200, 6800],
@@ -175,7 +166,7 @@ with tab2:
     })
 
     df_ab = st.data_editor(ab_data, use_container_width=True)
-    df_ab['open_rate'] = (df_ab['opens'] / df_ab['sends']) * 100
+    df_ab['open_rate'] = (df_ab['clicks'] / df_ab['sends']) * 100
     df_ab['ctr'] = (df_ab['clicks'] / df_ab['opens']) * 100
     df_ab['conv_rate'] = (df_ab['conversions'] / df_ab['clicks']) * 100
 
@@ -184,19 +175,29 @@ with tab2:
     winner = df_ab.iloc[win_idx]
     loser = df_ab.iloc[lose_idx]
 
+    # Robust Two-Proportion Z-Test calculation
+    clicks_w, opens_w = winner['clicks'], winner['opens']
+    clicks_l, opens_l = loser['clicks'], loser['opens']
+    
+    p1 = clicks_w / opens_w
+    p2 = clicks_l / opens_l
+    p_pool = (clicks_w + clicks_l) / (opens_w + opens_l)
+    se = math.sqrt(p_pool * (1 - p_pool) * (1/opens_w + 1/opens_l))
+    z_score = (p1 - p2) / se if se > 0 else 0
+    
+    # Calculate p-value via normal distribution
     if SCIPY_AVAILABLE:
-        count = np.array([winner['clicks'], loser['clicks']])
-        nobs = np.array([winner['opens'], loser['opens']])
-        z_stat, p_val = stats.proportions_ztest(count, nobs)
-        confidence = (1 - p_val) * 100
+        p_val = 2 * (1 - norm.cdf(abs(z_score)))
     else:
-        p_val = 0.0001
-        confidence = 99.9
+        # High precision standard normal error function approximation
+        p_val = math.erfc(abs(z_score) / math.sqrt(2))
+    
+    confidence = (1 - p_val) * 100
 
     m1, m2, m3 = st.columns(3)
     m1.metric("?? Winner", winner['variant'], f"{winner['ctr']:.2f}% CTR")
     m2.metric("?? Underperformer", loser['variant'], f"{loser['ctr']:.2f}% CTR")
-    m3.metric("?? Statistical Confidence", f"{confidence:.1f}%", "Statistically Significant" if p_val < 0.05 else "Inconclusive")
+    m3.metric("?? Statistical Confidence", f"{confidence:.1f}%", "Statistically Significant (p < 0.05)" if p_val < 0.05 else "Inconclusive")
 
     st.divider()
 
@@ -234,7 +235,7 @@ with tab3:
 
     rfm_file = "data/customer_transactions.csv"
     if os.path.exists(rfm_file):
-        df_trans = pd.read_csv(rfm_file)
+        df_trans = pd.read_csv(rfm_file, encoding="utf-8")
         df_trans['transaction_date'] = pd.to_datetime(df_trans['transaction_date'])
         snap_date = df_trans['transaction_date'].max() + pd.Timedelta(days=1)
 
