@@ -2,8 +2,8 @@
 ### Regulated European Digital Asset Lifecycle Engineering & Braze Architecture
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://growth-intelligence-engine.streamlit.app)
-[![Branch: bison-crypto-crm](https://img.shields.io/badge/Branch-bison--crypto--crm-blue.svg)](https://github.com/Faizan021/growth-intelligence-engine/tree/bison-crypto-crm)
-[![Compliance: BaFin / GDPR](https://img.shields.io/badge/Compliance-BaFin%20%26%20GDPR-green.svg)](https://www.bisonapp.com/)
+[![Branch: fintech-crypto-crm](https://img.shields.io/badge/Branch-fintech--crypto--crm-blue.svg)](https://github.com/Faizan021/growth-intelligence-engine/tree/fintech-crypto-crm)
+[![Compliance: BaFin / GDPR](https://img.shields.io/badge/Compliance-BaFin%20%26%20GDPR-green.svg)](https://www.fintechapp.com/)
 
 > **Fintech Lifecycle Architecture:** A specialized CRM engineering system built for **Regulated European Crypto & Wealthtech Exchanges** to optimize customer onboarding, automate recurring 'Sparplan' savings plans, execute market-volatility Braze Canvases, and maintain BaFin/GDPR governance.
 
@@ -40,4 +40,4 @@
 
 ## 👤 Author
 * **Faizan** — CRM Manager | Multi-Channel Lifecycle Automation & MarTech
-* **GitHub Branch:** `bison-crypto-crm`
+* **GitHub Branch:** `fintech-crypto-crm`

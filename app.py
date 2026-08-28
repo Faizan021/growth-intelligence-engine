@@ -104,8 +104,8 @@ with st.sidebar:
     
     st.divider()
     st.subheader("\U0001F3A8 Compliance & Brand Guidelines")
-    if os.path.exists("config/bison_brand_voice.json"):
-        with open("config/bison_brand_voice.json", encoding="utf-8") as f:
+    if os.path.exists("config/fintech_brand_voice.json"):
+        with open("config/fintech_brand_voice.json", encoding="utf-8") as f:
             brand_config = json.load(f)
         st.json(brand_config)
     else:
@@ -136,7 +136,7 @@ with tab1:
     </div>
     """, unsafe_allow_html=True)
 
-    kyc_df = pd.read_csv("data/bison_kyc_funnel.csv")
+    kyc_df = pd.read_csv("data/crypto_kyc_funnel.csv")
     
     col_k1, col_k2 = st.columns([3, 2])
     with col_k1:
@@ -310,7 +310,7 @@ with tab5:
     st.markdown("### \U0001F517 Braze Liquid Templating & Connected Content Live Engine")
     st.caption("Case Study: Pulling live real-time crypto prices & personal portfolio balance securely into push and email payloads via API.")
 
-    sample_liquid_payload = '''{% connected_content https://api.bisonapp.de/v1/market/prices :save btc_market %}
+    sample_liquid_payload = '''{% connected_content https://api.regulated-exchange.eu/v1/market/prices :save btc_market %}
 {% assign btc_change = btc_market.bitcoin.change_24h | default: 0 %}
 
 {% if {{${user_attribute_sparplan_active}}} == true %}
