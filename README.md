@@ -1,21 +1,21 @@
-# ⚡ BISON Crypto CRM & Lifecycle Automation Engine
-### Regulated Digital Asset Lifecycle Engineering | Boerse Stuttgart Digital
+# ⚡ Fintech Crypto CRM & Lifecycle Automation Engine
+### Regulated European Digital Asset Lifecycle Engineering & Braze Architecture
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://growth-intelligence-engine.streamlit.app)
 [![Branch: bison-crypto-crm](https://img.shields.io/badge/Branch-bison--crypto--crm-blue.svg)](https://github.com/Faizan021/growth-intelligence-engine/tree/bison-crypto-crm)
 [![Compliance: BaFin / GDPR](https://img.shields.io/badge/Compliance-BaFin%20%26%20GDPR-green.svg)](https://www.bisonapp.com/)
 
-> **Fintech Lifecycle Architecture:** A specialized CRM engineering system built for **BISON (Boerse Stuttgart Digital)** to optimize customer onboarding, automate recurring 'Sparplan' savings plans, execute market-volatility Braze Canvases, and maintain BaFin/GDPR governance.
+> **Fintech Lifecycle Architecture:** A specialized CRM engineering system built for **Regulated European Crypto & Wealthtech Exchanges** to optimize customer onboarding, automate recurring 'Sparplan' savings plans, execute market-volatility Braze Canvases, and maintain BaFin/GDPR governance.
 
 ---
 
 ## 🎯 The 5 Core Fintech CRM Case Studies
 
 ### 1. 🚀 KYC & VideoIdent Drop-Off Recovery: The 'Locked Wallet' & Cross-Device Mechanism
-* **The Challenge & Fintech Reality:** In BISON, new signups can explore live market data in a 'Restricted Read-Only Mode', but trading and deposits are locked behind BaFin VideoIdent verification. 41.8% abandon due to document friction or camera issues.
+* **The Challenge & Fintech Reality:** In Regulated Digital Asset Platform, new signups can explore live market data in a 'Restricted Read-Only Mode', but trading and deposits are locked behind BaFin VideoIdent verification. 41.8% abandon due to document friction or camera issues.
 * **The Solution:** Automated behavioral Braze Canvas journey:
   - *Hour 2 (Push Notification):* Reassurance prompt (*'You are 2 minutes away from your wallet'* + deep link to VideoIdent SDK).
-  - *Day 1 (Email):* Security trust guide highlighting Boerse Stuttgart's 160-year regulated exchange heritage.
+  - *Day 1 (Email):* Security trust guide highlighting Tier-1 European banking security and regulated exchange custody.
   - *Day 3 (In-App Banner):* €15 welcome bonus credit upon first SEPA bank transfer.
 * **Business Impact:** **+28.4% KYC completion rate lift**.
 

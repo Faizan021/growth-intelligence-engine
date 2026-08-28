@@ -18,13 +18,13 @@ except Exception:
     SCIPY_AVAILABLE = False
 
 st.set_page_config(
-    page_title="BISON CRM & Lifecycle Engine | Boerse Stuttgart Digital",
+    page_title="Fintech & Crypto CRM Lifecycle Engine | Regulated Digital Assets",
     page_icon="\U0001F4B0",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom Styling (Fintech / Boerse Stuttgart Digital theme)
+# Custom Styling (Fintech / Regulated European Exchange Group Digital theme)
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -87,8 +87,8 @@ st.markdown("""
 # Header Banner
 st.markdown("""
 <div class="hero-container">
-    <div class="status-badge">\U0001F7E2 Boerse Stuttgart Digital &bull; BISON Lifecycle Engine &bull; Braze Architecture</div>
-    <div class="hero-title">\U0001F4B0 BISON Crypto CRM & Lifecycle Automation Platform</div>
+    <div class="status-badge">\U0001F7E2 Regulated European Fintech &bull; Crypto & Wealthtech Lifecycle Engine &bull; Braze Architecture</div>
+    <div class="hero-title">\U0001F4B0 Fintech Crypto CRM & Lifecycle Automation Platform</div>
     <div class="hero-subtitle">
         Automated customer journeys for regulated retail crypto trading. Minimizing KYC drop-off, scaling recurring 'Sparplan' adoption, executing volatility-triggered Braze Canvases, and enforcing BaFin/GDPR deliverability governance.
     </div>
@@ -109,7 +109,7 @@ with st.sidebar:
             brand_config = json.load(f)
         st.json(brand_config)
     else:
-        brand_config = {"brand_name": "BISON", "tone": "Trustworthy, BaFin-compliant"}
+        brand_config = {"brand_name": "Regulated Wealthtech Exchange", "tone": "Trustworthy, BaFin-compliant"}
 
 # 5 Core Fintech CRM Tabs
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
@@ -125,7 +125,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 # -------------------------------------------------------------
 with tab1:
     st.markdown("### \U0001F680 KYC & Identity Verification Recovery: 'The Locked Wallet' Mechanism")
-    st.caption("Case Study: How BISON recovers users stuck in the 'Restricted Read-Only Mode' before BaFin VideoIdent verification.")
+    st.caption("Case Study: How Regulated Wealthtech Exchange recovers users stuck in the 'Restricted Read-Only Mode' before BaFin VideoIdent verification.")
 
     st.markdown("""
     <div class="hero-container" style="padding: 1.25rem 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
@@ -147,7 +147,7 @@ with tab1:
             marker=dict(color=["#3b82f6", "#f43f5e", "#f59e0b", "#10b981", "#8b5cf6"])
         ))
         fig_funnel.update_layout(
-            title="BISON Acquisition Funnel: From Restricted Mode to Verified Trader",
+            title="Regulated Wealthtech Exchange Acquisition Funnel: From Restricted Mode to Verified Trader",
             template="plotly_white",
             margin=dict(l=20, r=20, t=40, b=20)
         )
@@ -162,9 +162,9 @@ with tab1:
         <h5 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1rem;">🔬 The 3 Creative KYC Recovery Triggers (Braze Canvas):</h5>
         <div style="font-size: 0.88rem; color: #1e3a8a; line-height: 1.6;">
             <p><strong>1. Hour 2 — 'The Reserved Account & Endowed Progress Hook' (Push):</strong><br>
-            Instead of <em>'Verify your ID'</em>, the push frames progress: <em>'🔒 Your BISON trading wallet is 80% ready. Tap to finish the final 2-minute ID step so you can lock in your first trade.'</em></p>
+            Instead of <em>'Verify your ID'</em>, the push frames progress: <em>'🔒 Your Regulated Wealthtech Exchange trading wallet is 80% ready. Tap to finish the final 2-minute ID step so you can lock in your first trade.'</em></p>
             <p><strong>2. Day 1 — 'Market Movement Opportunity Hook' (Email):</strong><br>
-            If Bitcoin or Ethereum moves >3%, trigger dynamic email: <em>'BTC moved +4.2% today. Complete verification in 1 tap so you're ready for the next market entry.'</em> (Highlights Boerse Stuttgart's bank-level security).</p>
+            If Bitcoin or Ethereum moves >3%, trigger dynamic email: <em>'BTC moved +4.2% today. Complete verification in 1 tap so you're ready for the next market entry.'</em> (Highlights Regulated European Exchange Group's bank-level security).</p>
             <p style="margin-bottom: 0;"><strong>3. Day 3 — 'Cross-Device Web/Desktop Handoff' (SMS Magic Link):</strong><br>
             Many users drop off because their mobile webcam or lighting fails during VideoIdent. We send a secure SMS magic-link allowing them to complete verification on desktop with a passport/ID card in under 3 minutes.</p>
         </div>
@@ -197,7 +197,7 @@ with tab2:
         fig_dca = go.Figure()
         fig_dca.add_trace(go.Scatter(
             x=months_sim, y=dca_growth,
-            mode='lines+markers', name='💎 BISON Automated Sparplan (DCA)',
+            mode='lines+markers', name='💎 Regulated Wealthtech Exchange Automated Sparplan (DCA)',
             line=dict(color='#10b981', width=3), marker=dict(size=8)
         ))
         fig_dca.add_trace(go.Scatter(
@@ -227,7 +227,7 @@ with tab2:
             <p><strong>1. 'The Backtested Visualizer' (Email / In-App 48h Post-Trade):</strong><br>
             <em>'If you saved €50/month in Bitcoin since 2021, your portfolio would be +142% today with zero chart-watching stress. Set up your auto-Sparplan in 2 taps.'</em></p>
             <p><strong>2. 'Zero Extra Order Fees' Angle:</strong><br>
-            Highlights that BISON charges no additional transaction surcharge on recurring Sparplan executions compared to traditional brokers.</p>
+            Highlights that Regulated Wealthtech Exchange charges no additional transaction surcharge on recurring Sparplan executions compared to traditional brokers.</p>
             <p style="margin-bottom: 0;"><strong>3. Gamified Savings Streaks:</strong><br>
             Sends in-app milestone celebrations (e.g., <em>'🔥 3-Month Sparplan Streak Completed: You've automatically accumulated 0.015 BTC'</em>), locking in high retention.</p>
         </div>
@@ -254,7 +254,7 @@ with tab3:
     <div class="glass-card" style="border-left: 4px solid #f59e0b; background: #fffbeb; padding: 1.25rem;">
         <h5 style="color: #92400e; margin-bottom: 0.5rem; font-size: 1rem;">🛡️ BaFin & User Experience Governance Rules:</h5>
         <ul style="font-size: 0.88rem; color: #78350f; line-height: 1.6; margin-bottom: 0;">
-            <li><strong>Portfolio-Relevance Filtering:</strong> Users only receive volatility alerts for coins they actually hold in their BISON account or have added to their active Watchlist.</li>
+            <li><strong>Portfolio-Relevance Filtering:</strong> Users only receive volatility alerts for coins they actually hold in their trading account or have added to their active Watchlist.</li>
             <li><strong>24-Hour Cooldown Cap:</strong> Maximum 2 price alert push notifications per 24 hours per user to maintain < 0.15% opt-out rates.</li>
             <li><strong>Non-Promotional Neutral Tone:</strong> Alerts present factual market movements without speculative hype (strictly BaFin-compliant).</li>
         </ul>
@@ -298,7 +298,7 @@ with tab4:
             "⚠️ Dormant Inactive Traders (Needs Win-Back)": "#f43f5e",
             "⚡ Active Casual Traders": "#3b82f6"
         },
-        title="BISON Trader RFM Distribution (Recency vs. Trading Volume €)"
+        title="Crypto & Wealthtech Trader RFM Distribution (Recency vs. Trading Volume €)"
     )
     fig_crypto_rfm.update_layout(template="plotly_white", margin=dict(l=20, r=20, t=40, b=20))
     st.plotly_chart(fig_crypto_rfm, use_container_width=True)
@@ -317,7 +317,7 @@ with tab5:
   Subject: 💎 Your monthly Bitcoin Sparplan was executed successfully, {{${first_name} | default: "Trader"}}!
   Body: Hi {{${first_name}}}, your automated €{{${user_attribute_monthly_dca_amount}}} investment bought {{btc_market.bitcoin.purchased_sats}} sats at €{{btc_market.bitcoin.current_price_eur}}.
 {% else %}
-  Subject: 📈 Bitcoin is {{ btc_change }}% in the last 24h — Automate your savings with BISON Sparplan
+  Subject: 📈 Bitcoin is {{ btc_change }}% in the last 24h — Automate your savings with Automated Crypto Sparplan (DCA)
   Body: Hi {{${first_name}}}, avoid timing the market. Turn on recurring weekly buys with 0 extra fees.
 {% endif %}'''
 
