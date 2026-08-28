@@ -1,0 +1,13 @@
+{
+  "brand_name": "Savage Growth D2C",
+  "tone": "Bold, confident, urgent, VIP-centric, conversational without sounding discount-cheap",
+  "reading_grade_level": "Grade 6 to 7",
+  "banned_phrases": [
+    "cheap",
+    "click here",
+    "revolutionary",
+    "lowest price ever"
+  ],
+  "primary_framework": "PAS (Problem, Agitate, Solve)",
+  "secondary_framework": "AIDA (Attention, Interest, Desire, Action)"
+}
