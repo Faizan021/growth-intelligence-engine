@@ -142,11 +142,13 @@ with st.sidebar:
         brand_config = {"brand_name": "Savage Growth D2C", "tone": "Bold, confident, VIP-centric"}
 
 # Tabs Navigation
-tab1, tab2, tab3, tab4 = st.tabs([
-    "\U0001F4CA Module 1: Tableau YoY Drop Engine",
-    "\U0001F3AF Module 2: AI Copy Critic & PAS Re-writer",
-    "\U0001F465 Module 3: Predictive RFM CRM Segmentation",
-    "\U0001F6E1\ufe0f Module 4: Multi-Channel Fatigue Guard"
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+    "\U0001F4CA 1. Tableau YoY Drop Engine",
+    "\U0001F3AF 2. AI Copy Critic & PAS Re-writer",
+    "\U0001F465 3. Predictive RFM CRM Segmentation",
+    "\U0001F6E1\ufe0f 4. Multi-Channel Fatigue Guard",
+    "\U0001F916 5. GEO (AI Search) Brand Auditor",
+    "\U0001F50D 6. Programmatic SEO & GSC Gap Finder"
 ])
 
 # -------------------------------------------------------------
@@ -512,3 +514,46 @@ with tab4:
     g1.metric("Messages Evaluated", "4 recipients", "")
     g2.metric("Dispatched Safely", "2 recipients (50%)", "Optimized", delta_color="normal")
     g3.metric("Fatigue Suppressions", "2 recipients (50%)", "Protected List Health", delta_color="normal")
+
+
+# -------------------------------------------------------------
+# MODULE 5: Generative Engine Optimization (GEO) & AI Search Monitor
+# -------------------------------------------------------------
+with tab5:
+    st.markdown("### \U0001F916 GEO (Generative Engine Optimization) & AI Search Tracker")
+    st.caption("Monitors how AI search engines (ChatGPT Search, Perplexity, Gemini) cite and recommend your brand for high-intent commercial queries.")
+
+    geo_data = pd.DataFrame([
+        {"query": "best D2C VIP fashion membership brands", "ai_engine": "ChatGPT Search", "brand_mentioned": "\u2705 Yes", "rank_position": "Rank #1", "sentiment": "Positive / Luxury", "sources_cited": "Vogue, Forbes, Brand Home"},
+        {"query": "affordable luxury lingerie monthly drop", "ai_engine": "Perplexity", "brand_mentioned": "\u2705 Yes", "rank_position": "Rank #2", "sentiment": "High Quality / Inclusive", "sources_cited": "Elle, Byrdie, Reddit r/femalefashion"},
+        {"query": "athleisure subscription box comparison", "ai_engine": "Google AI Overviews", "brand_mentioned": "\u274c No", "rank_position": "Not Cited", "sentiment": "Neutral", "sources_cited": "Wirecutter, Byrdie"},
+        {"query": "best fitness recovery smart membership", "ai_engine": "Perplexity", "brand_mentioned": "\u2705 Yes", "rank_position": "Rank #1", "sentiment": "Scientific / Elite", "sources_cited": "TechCrunch, Men's Health"}
+    ])
+    
+    st.dataframe(geo_data, use_container_width=True)
+    
+    geo_c1, geo_c2, geo_c3 = st.columns(3)
+    geo_c1.metric("AI Share of Voice (SoV)", "75.0%", "+15.0% vs Competitors")
+    geo_c2.metric("Top-3 Citation Rate", "75.0%", "3 out of 4 AI queries cited")
+    geo_c3.metric("Digital PR Gap Identified", "1 Critical Query", "Needs Wirecutter / Reddit seeding")
+
+# -------------------------------------------------------------
+# MODULE 6: Programmatic SEO & GSC Striking Distance Gap Finder
+# -------------------------------------------------------------
+with tab6:
+    st.markdown("### \U0001F50D Programmatic SEO & GSC Striking Distance Gap Finder")
+    st.caption("Identifies 'striking distance' keywords (positions 8-18 with high impressions) from Google Search Console API and generates optimized Title/Meta tags.")
+
+    gsc_data = pd.DataFrame([
+        {"target_keyword": "vip membership lingerie drop", "impressions": 48200, "clicks": 580, "current_position": 11.4, "current_ctr": "1.20%", "projected_ctr_lift": "+3.40%", "suggested_title": "VIP Capsule Drops & Secret Vault Access | Exclusive Members"},
+        {"target_keyword": "best seamless workout sets 2026", "impressions": 62400, "clicks": 890, "current_position": 14.2, "current_ctr": "1.42%", "projected_ctr_lift": "+4.10%", "suggested_title": "10 Best Seamless Workout Sets of 2026 (Tested for Squats)"},
+        {"target_keyword": "skincare routine for glowing glass skin", "impressions": 89000, "clicks": 1100, "current_position": 12.8, "current_ctr": "1.23%", "projected_ctr_lift": "+3.80%", "suggested_title": "The 4-Step Glass Skin Skincare Routine (Dermatologist Approved)"},
+        {"target_keyword": "whoop vs oura ring recovery comparison", "impressions": 114000, "clicks": 2100, "current_position": 9.1, "current_ctr": "1.84%", "projected_ctr_lift": "+5.20%", "suggested_title": "Whoop vs Oura Ring in 2026: The Ultimate Wearable Recovery Guide"}
+    ])
+    
+    st.dataframe(gsc_data, use_container_width=True)
+    
+    s1, s2, s3 = st.columns(3)
+    s1.metric("Striking-Distance Impressions", "313,600", "High Volume Opportunity")
+    s2.metric("Projected Organic Traffic Lift", "+12,400 clicks/mo", "Via CTR Title Optimization")
+    s3.metric("Average Current Position", "11.9", "Positions 8 - 15 Page 2")
