@@ -1,0 +1,6 @@
+funnel_stage,users_entered,users_completed,drop_off_pct,primary_drop_reason,braze_automated_intervention
+1. App Registration,10000,9200,8.0%,Email verification pending,Automated magic-link email reminder (30m)
+2. Identity Verification (VideoIdent/ID),9200,5350,41.8%,ID friction & lack of document on hand,Push: 'You are 2 min away from your wallet' + Security trust email
+3. Bank Account Link / SEPA Deposit,5350,3800,29.0%,Manual bank transfer delay,In-App Modal: Fast SEPA Instant guide + €15 Welcome Bonus info
+4. First Crypto Trade Executed,3800,3150,17.1%,Market hesitation,Push alert on top mover + Beginner-friendly trading guide
+5. 'Sparplan' Recurring Savings Plan Setup,3150,1480,53.0%,Users forget to automate,Event trigger (48h post-trade): 'Automate your Bitcoin DCA with zero hassle'

@@ -1,0 +1,22 @@
+{
+  "brand_name": "BISON (Boerse Stuttgart Digital)",
+  "tone": "Trustworthy, transparent, smart, BaFin-compliant, empowering retail crypto investors without gambling/hype jargon",
+  "supported_languages": [
+    "German (DE)",
+    "English (EN)"
+  ],
+  "primary_channels": [
+    "Braze Push Notifications",
+    "In-App Messages",
+    "In-App Content Cards",
+    "Lifecycle Email"
+  ],
+  "forbidden_words": [
+    "get rich quick",
+    "to the moon",
+    "guaranteed returns",
+    "100x gem",
+    "free money"
+  ],
+  "compliance_standards": "BaFin Regulated (Germany), GDPR / DSGVO Strict Compliance"
+}
