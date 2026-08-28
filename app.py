@@ -850,40 +850,81 @@ with tab4:
 # MODULE 5: Generative Engine Optimization (GEO) & AI Search Monitor
 # -------------------------------------------------------------
 with tab5:
-    st.markdown("### \U0001F916 GEO (Generative Engine Optimization) & AI Search Tracker")
-    st.caption("Monitors how AI search engines (ChatGPT Search, Perplexity, Gemini) cite and recommend your brand for high-intent commercial queries.")
+    st.markdown("### \U0001F916 GEO (Generative Engine Optimization) & AI Search Citation Tracker")
+    st.caption("Case Study: Monitoring brand Share-of-Voice (SoV) and citation authority across ChatGPT Search, Perplexity, and Google AI Overviews.")
+
+    st.markdown("""
+    <div class="hero-container" style="padding: 1.25rem 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #311042 0%, #0f172a 100%);">
+        <h4 style="color: #f8fafc; margin-bottom: 0.35rem;">⚡ Case Study Objective: Capturing Conversational AI Search Demand</h4>
+        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin-bottom: 0;">
+            <em>"High-intent consumers increasingly query AI conversational search engines instead of traditional Google blue links. This engine tracks whether AI models recommend our brand for commercial category queries, audits cited third-party publications, and maps high-impact Digital PR seeding gaps."</em>
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
     geo_data = pd.DataFrame([
-        {"query": "best D2C VIP fashion membership brands", "ai_engine": "ChatGPT Search", "brand_mentioned": "\u2705 Yes", "rank_position": "Rank #1", "sentiment": "Positive / Luxury", "sources_cited": "Vogue, Forbes, Brand Home"},
-        {"query": "affordable luxury lingerie monthly drop", "ai_engine": "Perplexity", "brand_mentioned": "\u2705 Yes", "rank_position": "Rank #2", "sentiment": "High Quality / Inclusive", "sources_cited": "Elle, Byrdie, Reddit r/femalefashion"},
-        {"query": "athleisure subscription box comparison", "ai_engine": "Google AI Overviews", "brand_mentioned": "\u274c No", "rank_position": "Not Cited", "sentiment": "Neutral", "sources_cited": "Wirecutter, Byrdie"},
-        {"query": "best fitness recovery smart membership", "ai_engine": "Perplexity", "brand_mentioned": "\u2705 Yes", "rank_position": "Rank #1", "sentiment": "Scientific / Elite", "sources_cited": "TechCrunch, Men's Health"}
+        {"commercial_query": "Best D2C VIP fashion & lingerie membership brands", "ai_platform": "ChatGPT Search", "brand_citation": "✅ Cited #1", "sentiment": "⭐ Luxury & Inclusive", "sources_cited": "Vogue, Forbes, Brand Home", "action_needed": "Maintain Domain Authority"},
+        {"commercial_query": "Affordable luxury lingerie monthly drop subscription", "ai_platform": "Perplexity Pro", "brand_citation": "✅ Cited #2", "sentiment": "⭐ High Quality / Fit", "sources_cited": "Elle, Byrdie, Reddit r/femalefashion", "action_needed": "Seed Reddit Discussion Threads"},
+        {"commercial_query": "Athleisure subscription box comparison 2026", "ai_platform": "Google AI Overviews", "brand_citation": "❌ Unranked", "sentiment": "Neutral / Missing", "sources_cited": "Wirecutter, Byrdie Editorial", "action_needed": "High-Priority Wirecutter Editorial Outreach"},
+        {"commercial_query": "Best wearable fitness recovery membership", "ai_platform": "Perplexity Pro", "brand_citation": "✅ Cited #1", "sentiment": "⭐ Scientific / Precision", "sources_cited": "TechCrunch, Men's Health", "action_needed": "Schema Markup Optimization"}
     ])
     
     st.dataframe(geo_data, use_container_width=True)
     
     geo_c1, geo_c2, geo_c3 = st.columns(3)
-    geo_c1.metric("AI Share of Voice (SoV)", "75.0%", "+15.0% vs Competitors")
-    geo_c2.metric("Top-3 Citation Rate", "75.0%", "3 out of 4 AI queries cited")
-    geo_c3.metric("Digital PR Gap Identified", "1 Critical Query", "Needs Wirecutter / Reddit seeding")
+    geo_c1.metric("AI Share of Voice (SoV)", "75.0%", "+15.0% vs Category Rivals")
+    geo_c2.metric("Top-3 Citation Accuracy", "75.0%", "3 of 4 Core Queries Ranked")
+    geo_c3.metric("Digital PR Gaps Identified", "1 High-Intent Query", "Needs Wirecutter / Reddit seeding")
+
+    st.markdown("""
+    <div class="glass-card" style="border-left: 4px solid #8b5cf6; background: #faf5ff; padding: 1.25rem; margin-top: 1rem;">
+        <h5 style="color: #6b21a8; margin-bottom: 0.5rem; font-size: 1rem;">🔬 GEO Strategic Diagnosis: How AI Search Models Select Sources</h5>
+        <div style="font-size: 0.88rem; color: #4c1d95; line-height: 1.6;">
+            <p><strong>1. Reddit & Community Consensus Dominance:</strong><br>
+            Perplexity and ChatGPT heavily weight high-upvoted Reddit threads (e.g., <em>r/femalefashion</em>). Brands without active organic community advocacy are bypassed by LLM retrieval algorithms.</p>
+            <p style="margin-bottom: 0;"><strong>2. Structured Product Schema & Third-Party Listicles:</strong><br>
+            Google AI Overviews extracts data directly from authoritative comparison publishers (Wirecutter, Byrdie). Securing placement in top-3 editorial listicles directly translates into automated AI search recommendations.</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # -------------------------------------------------------------
 # MODULE 6: Programmatic SEO & GSC Striking Distance Gap Finder
 # -------------------------------------------------------------
 with tab6:
-    st.markdown("### \U0001F50D Programmatic SEO & GSC Striking Distance Gap Finder")
-    st.caption("Identifies 'striking distance' keywords (positions 8-18 with high impressions) from Google Search Console API and generates optimized Title/Meta tags.")
+    st.markdown("### \U0001F50D Programmatic SEO & Google Search Console Striking Distance Engine")
+    st.caption("Case Study: Mining high-impression queries ranking on Page 2 (Positions 8-18) via GSC API to capture low-hanging organic traffic.")
+
+    st.markdown("""
+    <div class="hero-container" style="padding: 1.25rem 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
+        <h4 style="color: #f8fafc; margin-bottom: 0.35rem;">⚡ Case Study Objective: Scaling Organic Traffic Without New Content</h4>
+        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin-bottom: 0;">
+            <em>"Publishing new blog posts takes weeks. In contrast, optimizing metadata and search-intent hooks on 'striking distance' keywords (Page 2 queries with 50,000+ monthly impressions) captures immediate organic traffic lift within 14 days."</em>
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
     gsc_data = pd.DataFrame([
-        {"target_keyword": "vip membership lingerie drop", "impressions": 48200, "clicks": 580, "current_position": 11.4, "current_ctr": "1.20%", "projected_ctr_lift": "+3.40%", "suggested_title": "VIP Capsule Drops & Secret Vault Access | Exclusive Members"},
-        {"target_keyword": "best seamless workout sets 2026", "impressions": 62400, "clicks": 890, "current_position": 14.2, "current_ctr": "1.42%", "projected_ctr_lift": "+4.10%", "suggested_title": "10 Best Seamless Workout Sets of 2026 (Tested for Squats)"},
-        {"target_keyword": "skincare routine for glowing glass skin", "impressions": 89000, "clicks": 1100, "current_position": 12.8, "current_ctr": "1.23%", "projected_ctr_lift": "+3.80%", "suggested_title": "The 4-Step Glass Skin Skincare Routine (Dermatologist Approved)"},
-        {"target_keyword": "whoop vs oura ring recovery comparison", "impressions": 114000, "clicks": 2100, "current_position": 9.1, "current_ctr": "1.84%", "projected_ctr_lift": "+5.20%", "suggested_title": "Whoop vs Oura Ring in 2026: The Ultimate Wearable Recovery Guide"}
+        {"target_keyword": "vip membership lingerie drop", "monthly_impressions": 48200, "clicks": 580, "position": 11.4, "current_ctr": "1.20%", "projected_ctr": "4.60%", "monthly_click_lift": "+1,638 clicks", "optimized_title": "VIP Capsule Drops & Secret Vault Access | Members First Pass"},
+        {"target_keyword": "best seamless workout sets 2026", "monthly_impressions": 62400, "clicks": 890, "position": 14.2, "current_ctr": "1.42%", "projected_ctr": "5.50%", "monthly_click_lift": "+2,542 clicks", "optimized_title": "10 Best Seamless Workout Sets of 2026 (Tested for Squats & Fit)"},
+        {"target_keyword": "skincare routine for glowing glass skin", "monthly_impressions": 89000, "clicks": 1100, "position": 12.8, "current_ctr": "1.23%", "projected_ctr": "5.10%", "monthly_click_lift": "+3,444 clicks", "optimized_title": "The 4-Step Glass Skin Routine: Dermatologist Guide & Product Order"},
+        {"target_keyword": "whoop vs oura ring recovery comparison", "monthly_impressions": 114000, "clicks": 2100, "position": 9.1, "current_ctr": "1.84%", "projected_ctr": "6.90%", "monthly_click_lift": "+5,768 clicks", "optimized_title": "Whoop vs Oura Ring in 2026: The Ultimate Wearable Recovery Test"}
     ])
     
     st.dataframe(gsc_data, use_container_width=True)
     
     s1, s2, s3 = st.columns(3)
-    s1.metric("Striking-Distance Impressions", "313,600", "High Volume Opportunity")
-    s2.metric("Projected Organic Traffic Lift", "+12,400 clicks/mo", "Via CTR Title Optimization")
-    s3.metric("Average Current Position", "11.9", "Positions 8 - 15 Page 2")
+    s1.metric("Striking-Distance Impressions", "313,600 / mo", "High-Intent Volume")
+    s2.metric("Projected Organic Traffic Gain", "+13,392 clicks / mo", "+287% CTR Expansion")
+    s3.metric("Average Current Ranking", "Pos 11.9", "Page 2 Opportunities")
+
+    st.markdown("""
+    <div class="glass-card" style="border-left: 4px solid #3b82f6; background: #eff6ff; padding: 1.25rem; margin-top: 1rem;">
+        <h5 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1rem;">🔬 Technical SEO Implementation Playbook</h5>
+        <div style="font-size: 0.88rem; color: #1e3a8a; line-height: 1.6;">
+            <p><strong>1. Automated GSC API Ingestion:</strong> Ingests Google Search Console performance data weekly via Python API scripts, filtering for <code>Impressions >= 20,000</code> and <code>Position between 8.0 and 18.0</code>.</p>
+            <p><strong>2. CTR Curve Benchmarking:</strong> Compares current page CTR against industry-standard Google CTR curves to calculate theoretical traffic loss.</p>
+            <p style="margin-bottom: 0;"><strong>3. Programmatic Metadata Deployment:</strong> Deploys search-intent optimized Title Tags, Schema Breadcrumbs, and internal anchor links to push positions from #12 → #4.</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
