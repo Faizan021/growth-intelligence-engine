@@ -11,20 +11,14 @@ import plotly.express as px
 import plotly.graph_objects as go
 from openai import OpenAI
 
-try:
-    from scipy.stats import norm
-    SCIPY_AVAILABLE = True
-except Exception:
-    SCIPY_AVAILABLE = False
-
 st.set_page_config(
-    page_title="Fintech & Crypto CRM Lifecycle Engine | Regulated Digital Assets",
+    page_title="Fintech & Crypto Lifecycle OS | Open-Source CRM Architecture",
     page_icon="\U0001F4B0",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom Styling (Fintech / Regulated European Exchange Group Digital theme)
+# Custom Styling
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -41,7 +35,7 @@ st.markdown("""
     }
     
     .hero-title {
-        font-size: 2.3rem;
+        font-size: 2.2rem;
         font-weight: 800;
         letter-spacing: -0.03em;
         background: linear-gradient(to right, #ffffff, #93c5fd, #6ee7b7);
@@ -87,10 +81,10 @@ st.markdown("""
 # Header Banner
 st.markdown("""
 <div class="hero-container">
-    <div class="status-badge">\U0001F7E2 Regulated European Fintech &bull; Crypto & Wealthtech Lifecycle Engine &bull; Braze Architecture</div>
-    <div class="hero-title">\U0001F4B0 Fintech Crypto CRM & Lifecycle Automation Platform</div>
+    <div class="status-badge">\U0001F7E2 Open-Source Fintech & Crypto Lifecycle Architecture &bull; Braze / Dittofeed &bull; Twenty CRM</div>
+    <div class="hero-title">\U0001F4B0 Fintech & Crypto CRM Lifecycle Operating System</div>
     <div class="hero-subtitle">
-        Automated customer journeys for regulated retail crypto trading. Minimizing KYC drop-off, scaling recurring 'Sparplan' adoption, executing volatility-triggered Braze Canvases, and enforcing BaFin/GDPR deliverability governance.
+        An open-source lifecycle automation architecture for European regulated crypto platforms and wealthtech apps. Automating 10 critical lifecycle stages: KYC onboarding recovery, recurring 'Sparplan' adoption, volatility alerts, staking updates, and BaFin/GDPR deliverability governance.
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -109,32 +103,24 @@ with st.sidebar:
             brand_config = json.load(f)
         st.json(brand_config)
     else:
-        brand_config = {"brand_name": "Regulated Wealthtech Exchange", "tone": "Trustworthy, BaFin-compliant"}
+        brand_config = {"brand_name": "Regulated Wealthtech App", "tone": "Trustworthy, BaFin-compliant"}
 
-# 5 Core Fintech CRM Tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "\U0001F680 1. KYC Drop-Off Recovery (Braze Canvas)",
-    "\U0001F4C8 2. 'Sparplan' DCA Adoption Engine",
-    "\U0001F4A5 3. Volatility Alerts & Frequency Guard",
-    "\U0001F465 4. Crypto Trader RFM Clustering",
-    "\U0001F517 5. Braze Liquid & Connected Content"
+# 6 Comprehensive Tabs Covering the 10 Core Use Cases
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+    "\U0001F680 1. KYC & Deposit Activation (Use Cases 1 & 2)",
+    "\U0001F4C8 2. 'Sparplan' DCA & Milestones (Use Cases 3 & 6)",
+    "\U0001F4A5 3. Volatility Alerts & Staking Yields (Use Cases 4 & 5)",
+    "\U0001F465 4. Trader RFM & Whale VIP Hub (Use Cases 9 & 10)",
+    "\U0001F4C4 5. Tax Reports & Feature Drops (Use Cases 7 & 8)",
+    "\U0001F517 6. Open-Source CRM & Liquid Engine (Dittofeed & Twenty)"
 ])
 
 # -------------------------------------------------------------
-# TAB 1: KYC Onboarding & Drop-Off Recovery
+# TAB 1: KYC Onboarding & Deposit Activation (Cases 1 & 2)
 # -------------------------------------------------------------
 with tab1:
-    st.markdown("### \U0001F680 KYC & Identity Verification Recovery: 'The Locked Wallet' Mechanism")
-    st.caption("Case Study: How Regulated Wealthtech Exchange recovers users stuck in the 'Restricted Read-Only Mode' before BaFin VideoIdent verification.")
-
-    st.markdown("""
-    <div class="hero-container" style="padding: 1.25rem 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
-        <h4 style="color: #f8fafc; margin-bottom: 0.35rem;">⚡ Fintech Reality: The 'Restricted Read-Only' App State</h4>
-        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin-bottom: 0;">
-            <em>"When users sign up, they can explore live crypto charts and market news in <strong>Read-Only Mode</strong>, but trading is locked behind BaFin identity verification. Rather than generic 'Please verify' nags, we use the <strong>Endowed Progress Effect</strong> and <strong>Cross-Device VideoIdent Handoffs</strong> to recover 28.4% of abandoned accounts."</em>
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("### \U0001F680 Use Cases 1 & 2: KYC Drop-Off Recovery & First SEPA Deposit")
+    st.caption("Case Study: Recovering the 41.8% drop-off during BaFin-mandated VideoIdent verification and activating 1st SEPA deposits.")
 
     kyc_df = pd.read_csv("data/crypto_kyc_funnel.csv")
     
@@ -147,47 +133,34 @@ with tab1:
             marker=dict(color=["#3b82f6", "#f43f5e", "#f59e0b", "#10b981", "#8b5cf6"])
         ))
         fig_funnel.update_layout(
-            title="Regulated Wealthtech Exchange Acquisition Funnel: From Restricted Mode to Verified Trader",
+            title="Customer Acquisition Funnel: From Restricted Mode to Verified Trader",
             template="plotly_white",
             margin=dict(l=20, r=20, t=40, b=20)
         )
         st.plotly_chart(fig_funnel, use_container_width=True)
 
     with col_k2:
-        st.markdown("#### 📋 Funnel Friction & Behavioral Interventions")
+        st.markdown("#### 📋 Funnel Friction & Automated Interventions")
         st.dataframe(kyc_df[['funnel_stage', 'drop_off_pct', 'primary_drop_reason']], use_container_width=True, height=320)
 
     st.markdown("""
     <div class="glass-card" style="border-left: 4px solid #3b82f6; background: #eff6ff; padding: 1.25rem;">
-        <h5 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1rem;">🔬 The 3 Creative KYC Recovery Triggers (Braze Canvas):</h5>
+        <h5 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1rem;">🔬 The 3 Core Activation Triggers (Braze / Dittofeed Canvas):</h5>
         <div style="font-size: 0.88rem; color: #1e3a8a; line-height: 1.6;">
-            <p><strong>1. Hour 2 — 'The Reserved Account & Endowed Progress Hook' (Push):</strong><br>
-            Instead of <em>'Verify your ID'</em>, the push frames progress: <em>'🔒 Your Regulated Wealthtech Exchange trading wallet is 80% ready. Tap to finish the final 2-minute ID step so you can lock in your first trade.'</em></p>
-            <p><strong>2. Day 1 — 'Market Movement Opportunity Hook' (Email):</strong><br>
-            If Bitcoin or Ethereum moves >3%, trigger dynamic email: <em>'BTC moved +4.2% today. Complete verification in 1 tap so you're ready for the next market entry.'</em> (Highlights Regulated European Exchange Group's bank-level security).</p>
-            <p style="margin-bottom: 0;"><strong>3. Day 3 — 'Cross-Device Web/Desktop Handoff' (SMS Magic Link):</strong><br>
-            Many users drop off because their mobile webcam or lighting fails during VideoIdent. We send a secure SMS magic-link allowing them to complete verification on desktop with a passport/ID card in under 3 minutes.</p>
+            <p><strong>• Use Case 1 (Hour 2 - Push Notification):</strong> <em>'🔒 Your trading wallet is 80% ready. Tap to finish quick 2-min verification and claim your allocated wallet address.'</em> (Deep-links directly to VideoIdent SDK).</p>
+            <p><strong>• Use Case 1 (Day 3 - SMS Desktop Handoff):</strong> Send a secure SMS magic link allowing users to complete verification on desktop with a webcam if mobile lighting fails.</p>
+            <p style="margin-bottom: 0;"><strong>• Use Case 2 (Day 1 Post-KYC - First Deposit Activation):</strong> Nudge verified users with an instant SEPA guide highlighting €0 deposit fees and €15 welcome trading bonus.</p>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 # -------------------------------------------------------------
-# TAB 2: 'Sparplan' DCA Recurring Savings Adoption
+# TAB 2: 'Sparplan' DCA & Milestones (Cases 3 & 6)
 # -------------------------------------------------------------
 with tab2:
-    st.markdown("### \U0001F4C8 'Sparplan' (DCA Recurring Savings) Adoption: The Stress-Free Trader")
-    st.caption("Case Study: Converting volatile spot traders into automated monthly Bitcoin/Ethereum savings plans (Dollar-Cost Averaging).")
+    st.markdown("### \U0001F4C8 Use Cases 3 & 6: Automated 'Sparplan' (DCA) & Milestone Celebrations")
+    st.caption("Case Study: Converting volatile spot traders into automated monthly crypto savings plans (Dollar-Cost Averaging) and gamifying milestones.")
 
-    st.markdown("""
-    <div class="hero-container" style="padding: 1.25rem 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);">
-        <h4 style="color: #f8fafc; margin-bottom: 0.35rem;">⚡ Creative Lifecycle Concept: 'Eliminate Market Anxiety'</h4>
-        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin-bottom: 0;">
-            <em>"Spot crypto buyers get exhausted watching 1-minute candlestick charts and second-guessing market dips. 48h after their 1st trade, Braze triggers a <strong>personalized DCA Backtest Simulator</strong> showing that automated recurring buys outperform 78% of emotional retail day-traders."</em>
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Interactive DCA Simulation vs Spot Trading
     col_dca1, col_dca2 = st.columns([3, 2])
     with col_dca1:
         months_sim = ["Month 1", "Month 3", "Month 6", "Month 9", "Month 12", "Month 18", "Month 24"]
@@ -197,7 +170,7 @@ with tab2:
         fig_dca = go.Figure()
         fig_dca.add_trace(go.Scatter(
             x=months_sim, y=dca_growth,
-            mode='lines+markers', name='💎 Regulated Wealthtech Exchange Automated Sparplan (DCA)',
+            mode='lines+markers', name='💎 Automated Crypto Sparplan (DCA)',
             line=dict(color='#10b981', width=3), marker=dict(size=8)
         ))
         fig_dca.add_trace(go.Scatter(
@@ -215,32 +188,27 @@ with tab2:
         st.plotly_chart(fig_dca, use_container_width=True)
 
     with col_dca2:
-        st.markdown("#### 🎯 Sparplan Adoption Metrics")
-        st.metric("Sparplan Adoption Lift", "38.2%", "+14.5% YoY via DCA Nudges")
+        st.markdown("#### 🎯 Sparplan Adoption & LTV Metrics")
+        st.metric("Sparplan Adoption Rate", "38.2%", "+14.5% YoY via DCA Nudges")
         st.metric("12-Month LTV Multiplier", "3.8x higher LTV", "Recurring auto-deposit volume")
         st.metric("90-Day Churn Reduction", "14.2% Churn", "-70.8% vs Manual Spot Traders", delta_color="inverse")
 
     st.markdown("""
     <div class="glass-card" style="border-left: 4px solid #10b981; background: #f0fdf4; padding: 1.25rem;">
-        <h5 style="color: #065f46; margin-bottom: 0.5rem; font-size: 1rem;">🔬 The 3 Creative Sparplan Retention Hooks:</h5>
+        <h5 style="color: #065f46; margin-bottom: 0.5rem; font-size: 1rem;">🔬 Behavioral Habit Formation:</h5>
         <div style="font-size: 0.88rem; color: #064e3b; line-height: 1.6;">
-            <p><strong>1. 'The Backtested Visualizer' (Email / In-App 48h Post-Trade):</strong><br>
-            <em>'If you saved €50/month in Bitcoin since 2021, your portfolio would be +142% today with zero chart-watching stress. Set up your auto-Sparplan in 2 taps.'</em></p>
-            <p><strong>2. 'Zero Extra Order Fees' Angle:</strong><br>
-            Highlights that Regulated Wealthtech Exchange charges no additional transaction surcharge on recurring Sparplan executions compared to traditional brokers.</p>
-            <p style="margin-bottom: 0;"><strong>3. Gamified Savings Streaks:</strong><br>
-            Sends in-app milestone celebrations (e.g., <em>'🔥 3-Month Sparplan Streak Completed: You've automatically accumulated 0.015 BTC'</em>), locking in high retention.</p>
+            <p><strong>• Use Case 3 (48h Post-Trade - The Stress-Free Sparplan):</strong> <em>'Take the stress out of market timing. Set up an automated €50/month Bitcoin Sparplan with zero extra order fees.'</em></p>
+            <p style="margin-bottom: 0;"><strong>• Use Case 6 (Milestone Gamification):</strong> When a user accumulates their first €1,000 or 0.1 BTC, trigger celebratory in-app confetti cards and streak badges to reinforce positive investing habits.</p>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-
 # -------------------------------------------------------------
-# TAB 3: Volatility Alerts & Frequency Guard
+# TAB 3: Volatility Alerts & Staking Yields (Cases 4 & 5)
 # -------------------------------------------------------------
 with tab3:
-    st.markdown("### \U0001F4A5 Market Volatility Price Alerts & Deliverability Guard")
-    st.caption("Case Study: Capitalizing on Bitcoin/Ethereum ±5% market swings while enforcing strict 24h cooling periods to prevent app uninstalls.")
+    st.markdown("### \U0001F4A5 Use Cases 4 & 5: Market Volatility Push Alerts & Staking Payouts")
+    st.caption("Case Study: Capitalizing on Bitcoin/Ethereum ±5% market swings and weekly staking yield distributions.")
 
     v_data = pd.DataFrame([
         {"asset": "Bitcoin (BTC)", "price_change_24h": "+7.4%", "trigger_action": "✅ BUY DIP / RALLY PUSH", "cooling_status": "Eligible (Last touch 36h ago)", "portfolio_relevance": "User holds BTC"},
@@ -252,21 +220,20 @@ with tab3:
 
     st.markdown("""
     <div class="glass-card" style="border-left: 4px solid #f59e0b; background: #fffbeb; padding: 1.25rem;">
-        <h5 style="color: #92400e; margin-bottom: 0.5rem; font-size: 1rem;">🛡️ BaFin & User Experience Governance Rules:</h5>
+        <h5 style="color: #92400e; margin-bottom: 0.5rem; font-size: 1rem;">🛡️ Use Cases 4 & 5 Automation Mechanics:</h5>
         <ul style="font-size: 0.88rem; color: #78350f; line-height: 1.6; margin-bottom: 0;">
-            <li><strong>Portfolio-Relevance Filtering:</strong> Users only receive volatility alerts for coins they actually hold in their trading account or have added to their active Watchlist.</li>
-            <li><strong>24-Hour Cooldown Cap:</strong> Maximum 2 price alert push notifications per 24 hours per user to maintain < 0.15% opt-out rates.</li>
-            <li><strong>Non-Promotional Neutral Tone:</strong> Alerts present factual market movements without speculative hype (strictly BaFin-compliant).</li>
+            <li><strong>Use Case 4 (Volatility Alerts):</strong> Automated webhook checks coin movements every 15m. Alerts only trigger for assets the user holds or watches, with a strict <strong>24h cooling cap (max 2 pushes/day)</strong>.</li>
+            <li><strong>Use Case 5 (Staking Yield Payouts):</strong> Weekly automated push/email notifying users of accrued rewards: <em>'💎 You earned €4.80 in Ethereum staking rewards this week. Your rewards have been automatically reinvested.'</em></li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
 
 # -------------------------------------------------------------
-# TAB 4: Crypto Trader RFM Clustering
+# TAB 4: Trader RFM & Whale VIP Hub (Cases 9 & 10)
 # -------------------------------------------------------------
 with tab4:
-    st.markdown("### \U0001F465 Crypto Trader Lifecycle Segmentation (RFM)")
-    st.caption("Case Study: Tailoring CRM communication by Trading Recency (Days), Monthly Frequency (Trades), and Monetary Volume (€).")
+    st.markdown("### \U0001F465 Use Cases 9 & 10: Trader RFM Clustering & Whale VIP Management")
+    st.caption("Case Study: Preventing 60-day trader churn and providing white-glove VIP management for high-volume traders (>€25k vol).")
 
     df_rfm = pd.read_csv("data/crypto_trader_rfm.csv")
     
@@ -298,18 +265,68 @@ with tab4:
             "⚠️ Dormant Inactive Traders (Needs Win-Back)": "#f43f5e",
             "⚡ Active Casual Traders": "#3b82f6"
         },
-        title="Crypto & Wealthtech Trader RFM Distribution (Recency vs. Trading Volume €)"
+        title="Trader RFM Distribution (Recency vs. Trading Volume €)"
     )
     fig_crypto_rfm.update_layout(template="plotly_white", margin=dict(l=20, r=20, t=40, b=20))
     st.plotly_chart(fig_crypto_rfm, use_container_width=True)
 
+    st.markdown("""
+    <div class="glass-card" style="border-left: 4px solid #8b5cf6; background: #faf5ff; padding: 1.25rem;">
+        <h5 style="color: #6b21a8; margin-bottom: 0.5rem; font-size: 1rem;">🔬 Targeted Retention & VIP Strategies:</h5>
+        <div style="font-size: 0.88rem; color: #4c1d95; line-height: 1.6;">
+            <p><strong>• Use Case 9 (60-Day Dormant Win-Back):</strong> Personalized market recap email: <em>'Here is what happened in the crypto market while you were away + Your portfolio valuation update.'</em></p>
+            <p style="margin-bottom: 0;"><strong>• Use Case 10 (High-Volume Whale Concierge):</strong> Automatically flags users with >€25k volume to receive reduced trading spread rebates and personal VIP Telegram/Email concierge support.</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
 # -------------------------------------------------------------
-# TAB 5: Braze Liquid & Connected Content
+# TAB 5: Tax Reports & Feature Drops (Cases 7 & 8)
 # -------------------------------------------------------------
 with tab5:
-    st.markdown("### \U0001F517 Braze Liquid Templating & Connected Content Live Engine")
-    st.caption("Case Study: Pulling live real-time crypto prices & personal portfolio balance securely into push and email payloads via API.")
+    st.markdown("### \U0001F4C4 Use Cases 7 & 8: Annual Tax Reports & New Asset Listings")
+    st.caption("Case Study: Delivering high-engagement German tax certificates (Steuerbescheinigung) and launching new tradable assets.")
 
+    t_col1, t_col2 = st.columns(2)
+    with t_col1:
+        st.markdown("""
+        <div class="glass-card" style="border-left: 4px solid #3b82f6; background: #eff6ff;">
+            <h5 style="color: #1e40af; margin-bottom: 0.35rem;">📄 Use Case 8: Annual Tax Report Ready (Steuerbescheinigung)</h5>
+            <p style="font-size: 0.88rem; color: #1e3a8a; line-height: 1.5;">
+                In Germany, crypto tax calculation is a major friction point. In January, an automated email and in-app card notifies users that their 1-click PDF tax report is ready for the Finanzamt, generating <strong>68.4% open rates</strong>.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with t_col2:
+        st.markdown("""
+        <div class="glass-card" style="border-left: 4px solid #10b981; background: #f0fdf4;">
+            <h5 style="color: #065f46; margin-bottom: 0.35rem;">🚀 Use Case 7: New Asset Listing & Educational Carousels</h5>
+            <p style="font-size: 0.88rem; color: #064e3b; line-height: 1.5;">
+                When listing a new crypto asset (e.g. Solana, Cardano), Braze triggers an educational lookbook explaining fundamentals, staking options, and BaFin regulatory status, driving a <strong>+42% 1st-week volume surge</strong>.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+# -------------------------------------------------------------
+# TAB 6: Open-Source Architecture (Dittofeed & Twenty CRM)
+# -------------------------------------------------------------
+with tab6:
+    st.markdown("### \U0001F517 Open-Source CRM Architecture & Liquid Templating Engine")
+    st.caption("Live integration schemas for open-source self-hosted platforms (Dittofeed, Twenty CRM, Novu, Formbricks).")
+
+    st.markdown("""
+    <div class="glass-card" style="border-left: 4px solid #0f766e; background: #f0fdfa; padding: 1.25rem;">
+        <h5 style="color: #0f766e; margin-bottom: 0.5rem; font-size: 1rem;">🐙 Open-Source Stack Powering This Architecture:</h5>
+        <ul style="font-size: 0.88rem; color: #134e4a; line-height: 1.6; margin-bottom: 0;">
+            <li><strong>Dittofeed (<code>github.com/dittofeed/dittofeed</code>):</strong> Self-hosted Braze alternative ensuring zero PII customer data leaves the regulated EU VPC.</li>
+            <li><strong>Twenty CRM (<code>github.com/twentyhq/twenty</code>):</strong> GraphQL-first CRM for managing trader accounts, KYC statuses, and VIP tiers.</li>
+            <li><strong>Novu (<code>github.com/novuhq/novu</code>):</strong> Multi-channel push and in-app notification infrastructure for real-time volatility alerts.</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("#### 🔗 Dynamic Liquid Event Template:")
     sample_liquid_payload = '''{% connected_content https://api.regulated-exchange.eu/v1/market/prices :save btc_market %}
 {% assign btc_change = btc_market.bitcoin.change_24h | default: 0 %}
 
@@ -317,9 +334,8 @@ with tab5:
   Subject: 💎 Your monthly Bitcoin Sparplan was executed successfully, {{${first_name} | default: "Trader"}}!
   Body: Hi {{${first_name}}}, your automated €{{${user_attribute_monthly_dca_amount}}} investment bought {{btc_market.bitcoin.purchased_sats}} sats at €{{btc_market.bitcoin.current_price_eur}}.
 {% else %}
-  Subject: 📈 Bitcoin is {{ btc_change }}% in the last 24h — Automate your savings with Automated Crypto Sparplan (DCA)
+  Subject: 📈 Bitcoin is {{ btc_change }}% in the last 24h — Automate your savings with our Sparplan
   Body: Hi {{${first_name}}}, avoid timing the market. Turn on recurring weekly buys with 0 extra fees.
 {% endif %}'''
 
     st.code(sample_liquid_payload, language="liquid")
-    st.info("💡 **Technical Advantage:** Proves hands-on mastery of **Braze Connected Content, conditional Liquid branching, and fallback logic** for fintech CRM setups.")
