@@ -124,14 +124,14 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 # TAB 1: KYC Onboarding & Drop-Off Recovery
 # -------------------------------------------------------------
 with tab1:
-    st.markdown("### \U0001F680 KYC & Identity Verification Drop-Off Recovery Engine")
-    st.caption("Case Study: Recovering the 41.8% drop-off during BaFin-mandated VideoIdent verification using automated Braze Canvas multi-touch journeys.")
+    st.markdown("### \U0001F680 KYC & Identity Verification Recovery: 'The Locked Wallet' Mechanism")
+    st.caption("Case Study: How BISON recovers users stuck in the 'Restricted Read-Only Mode' before BaFin VideoIdent verification.")
 
     st.markdown("""
     <div class="hero-container" style="padding: 1.25rem 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
-        <h4 style="color: #f8fafc; margin-bottom: 0.35rem;">⚡ Case Study Objective: Slashing German VideoIdent Friction</h4>
+        <h4 style="color: #f8fafc; margin-bottom: 0.35rem;">⚡ Fintech Reality: The 'Restricted Read-Only' App State</h4>
         <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin-bottom: 0;">
-            <em>"In German crypto apps, identity verification is the single largest leak in the acquisition funnel. This engine identifies users stuck at KYC and deploys a 3-touch behavioral journey (Hour 2 Push → Day 1 Trust Email → Day 3 In-App Modal) to achieve a <strong>+28.4% KYC completion lift</strong>."</em>
+            <em>"When users sign up, they can explore live crypto charts and market news in <strong>Read-Only Mode</strong>, but trading is locked behind BaFin identity verification. Rather than generic 'Please verify' nags, we use the <strong>Endowed Progress Effect</strong> and <strong>Cross-Device VideoIdent Handoffs</strong> to recover 28.4% of abandoned accounts."</em>
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -147,23 +147,26 @@ with tab1:
             marker=dict(color=["#3b82f6", "#f43f5e", "#f59e0b", "#10b981", "#8b5cf6"])
         ))
         fig_funnel.update_layout(
-            title="BISON Customer Acquisition & KYC Drop-Off Funnel",
+            title="BISON Acquisition Funnel: From Restricted Mode to Verified Trader",
             template="plotly_white",
             margin=dict(l=20, r=20, t=40, b=20)
         )
         st.plotly_chart(fig_funnel, use_container_width=True)
 
     with col_k2:
-        st.markdown("#### 📋 Funnel Breakdown & Interventions")
+        st.markdown("#### 📋 Funnel Friction & Behavioral Interventions")
         st.dataframe(kyc_df[['funnel_stage', 'drop_off_pct', 'primary_drop_reason']], use_container_width=True, height=320)
 
     st.markdown("""
     <div class="glass-card" style="border-left: 4px solid #3b82f6; background: #eff6ff; padding: 1.25rem;">
-        <h5 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1rem;">🔬 Braze Multi-Touch Canvas Journey for KYC Recovery</h5>
+        <h5 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1rem;">🔬 The 3 Creative KYC Recovery Triggers (Braze Canvas):</h5>
         <div style="font-size: 0.88rem; color: #1e3a8a; line-height: 1.6;">
-            <p><strong>• Touch 1 (Hour 2 - Push Notification):</strong> <em>'🔒 You're only 2 minutes away from unlocking your BISON crypto wallet. Tap to complete quick ID verification.'</em> (Deep-links directly to VideoIdent SDK).</p>
-            <p><strong>• Touch 2 (Day 1 - Security & Trust Email):</strong> Addresses privacy fears by highlighting Boerse Stuttgart's 160-year regulated German exchange heritage and bank-grade escrow custody.</p>
-            <p style="margin-bottom: 0;"><strong>• Touch 3 (Day 3 - In-App Banner):</strong> Triggers on app open offering €15 welcome trading bonus credit upon successful first SEPA transfer.</p>
+            <p><strong>1. Hour 2 — 'The Reserved Account & Endowed Progress Hook' (Push):</strong><br>
+            Instead of <em>'Verify your ID'</em>, the push frames progress: <em>'🔒 Your BISON trading wallet is 80% ready. Tap to finish the final 2-minute ID step so you can lock in your first trade.'</em></p>
+            <p><strong>2. Day 1 — 'Market Movement Opportunity Hook' (Email):</strong><br>
+            If Bitcoin or Ethereum moves >3%, trigger dynamic email: <em>'BTC moved +4.2% today. Complete verification in 1 tap so you're ready for the next market entry.'</em> (Highlights Boerse Stuttgart's bank-level security).</p>
+            <p style="margin-bottom: 0;"><strong>3. Day 3 — 'Cross-Device Web/Desktop Handoff' (SMS Magic Link):</strong><br>
+            Many users drop off because their mobile webcam or lighting fails during VideoIdent. We send a secure SMS magic-link allowing them to complete verification on desktop with a passport/ID card in under 3 minutes.</p>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -172,29 +175,65 @@ with tab1:
 # TAB 2: 'Sparplan' DCA Recurring Savings Adoption
 # -------------------------------------------------------------
 with tab2:
-    st.markdown("### \U0001F4C8 'Sparplan' (DCA Recurring Savings) Adoption Engine")
-    st.caption("Case Study: Transitioning one-time crypto buyers into automated weekly/monthly recurring savings plans (Dollar Cost Averaging).")
-
-    s_col1, s_col2 = st.columns(2)
-    with s_col1:
-        st.metric("Sparplan Adoption Rate", "38.2%", "+14.5% YoY via Lifecycle Nudges")
-        st.metric("Average Monthly DCA Volume", "€185.00 / mo", "Predictable Recurring Volume")
-    with s_col2:
-        st.metric("12-Month LTV Multiplier", "3.8x higher LTV", "Compared to manual spot traders")
-        st.metric("90-Day Churn Rate", "14.2%", "vs 48.6% for manual traders", delta_color="inverse")
+    st.markdown("### \U0001F4C8 'Sparplan' (DCA Recurring Savings) Adoption: The Stress-Free Trader")
+    st.caption("Case Study: Converting volatile spot traders into automated monthly Bitcoin/Ethereum savings plans (Dollar-Cost Averaging).")
 
     st.markdown("""
-    <div class="glass-card" style="border-left: 4px solid #10b981; background: #f0fdf4; padding: 1.25rem; margin-top: 1rem;">
-        <h5 style="color: #065f46; margin-bottom: 0.5rem; font-size: 1rem;">🔬 Behavioral Trigger Logic: 48h Post-1st Trade</h5>
+    <div class="hero-container" style="padding: 1.25rem 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);">
+        <h4 style="color: #f8fafc; margin-bottom: 0.35rem;">⚡ Creative Lifecycle Concept: 'Eliminate Market Anxiety'</h4>
+        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin-bottom: 0;">
+            <em>"Spot crypto buyers get exhausted watching 1-minute candlestick charts and second-guessing market dips. 48h after their 1st trade, Braze triggers a <strong>personalized DCA Backtest Simulator</strong> showing that automated recurring buys outperform 78% of emotional retail day-traders."</em>
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Interactive DCA Simulation vs Spot Trading
+    col_dca1, col_dca2 = st.columns([3, 2])
+    with col_dca1:
+        months_sim = ["Month 1", "Month 3", "Month 6", "Month 9", "Month 12", "Month 18", "Month 24"]
+        dca_growth = [100, 320, 680, 1150, 1720, 3100, 4850]
+        manual_volatile = [100, 180, 90, 420, 310, 850, 1920]
+
+        fig_dca = go.Figure()
+        fig_dca.add_trace(go.Scatter(
+            x=months_sim, y=dca_growth,
+            mode='lines+markers', name='💎 BISON Automated Sparplan (DCA)',
+            line=dict(color='#10b981', width=3), marker=dict(size=8)
+        ))
+        fig_dca.add_trace(go.Scatter(
+            x=months_sim, y=manual_volatile,
+            mode='lines+markers', name='📉 Emotional Spot Trading (High Churn)',
+            line=dict(color='#f43f5e', width=2, dash='dash'), marker=dict(size=6)
+        ))
+        fig_dca.update_layout(
+            title="Portfolio Value Simulation (€): Automated Sparplan vs. Emotional Trading",
+            yaxis_title="Simulated Portfolio (€)",
+            template="plotly_white",
+            margin=dict(l=20, r=20, t=40, b=20),
+            legend=dict(orientation="h", yanchor="top", y=-0.15, xanchor="center", x=0.5)
+        )
+        st.plotly_chart(fig_dca, use_container_width=True)
+
+    with col_dca2:
+        st.markdown("#### 🎯 Sparplan Adoption Metrics")
+        st.metric("Sparplan Adoption Lift", "38.2%", "+14.5% YoY via DCA Nudges")
+        st.metric("12-Month LTV Multiplier", "3.8x higher LTV", "Recurring auto-deposit volume")
+        st.metric("90-Day Churn Reduction", "14.2% Churn", "-70.8% vs Manual Spot Traders", delta_color="inverse")
+
+    st.markdown("""
+    <div class="glass-card" style="border-left: 4px solid #10b981; background: #f0fdf4; padding: 1.25rem;">
+        <h5 style="color: #065f46; margin-bottom: 0.5rem; font-size: 1rem;">🔬 The 3 Creative Sparplan Retention Hooks:</h5>
         <div style="font-size: 0.88rem; color: #064e3b; line-height: 1.6;">
-            <p><strong>The Strategy:</strong> Manual crypto buyers suffer from market timing anxiety. 48 hours after their first BTC/ETH purchase, Braze triggers an educational in-app card:</p>
-            <blockquote style="background: white; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #10b981;">
-                <strong>In-App / Push Hook:</strong> <em>"Take the stress out of market volatility. Set up an automated BISON Sparplan from €20/month with zero extra order fees."</em>
-            </blockquote>
-            <p style="margin-bottom: 0;"><strong>The Business Outcome:</strong> Converts volatile spot traders into sticky long-term investors, stabilizing platform revenue regardless of market cycles.</p>
+            <p><strong>1. 'The Backtested Visualizer' (Email / In-App 48h Post-Trade):</strong><br>
+            <em>'If you saved €50/month in Bitcoin since 2021, your portfolio would be +142% today with zero chart-watching stress. Set up your auto-Sparplan in 2 taps.'</em></p>
+            <p><strong>2. 'Zero Extra Order Fees' Angle:</strong><br>
+            Highlights that BISON charges no additional transaction surcharge on recurring Sparplan executions compared to traditional brokers.</p>
+            <p style="margin-bottom: 0;"><strong>3. Gamified Savings Streaks:</strong><br>
+            Sends in-app milestone celebrations (e.g., <em>'🔥 3-Month Sparplan Streak Completed: You've automatically accumulated 0.015 BTC'</em>), locking in high retention.</p>
         </div>
     </div>
     """, unsafe_allow_html=True)
+
 
 # -------------------------------------------------------------
 # TAB 3: Volatility Alerts & Frequency Guard

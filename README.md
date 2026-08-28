@@ -11,8 +11,8 @@
 
 ## 🎯 The 5 Core Fintech CRM Case Studies
 
-### 1. 🚀 KYC & VideoIdent Drop-Off Recovery (Braze Multi-Touch Canvas)
-* **The Challenge:** German BaFin regulatory compliance requires strict VideoIdent / ID verification. 41.8% of new signups abandon between registration and ID approval.
+### 1. 🚀 KYC & VideoIdent Drop-Off Recovery: The 'Locked Wallet' & Cross-Device Mechanism
+* **The Challenge & Fintech Reality:** In BISON, new signups can explore live market data in a 'Restricted Read-Only Mode', but trading and deposits are locked behind BaFin VideoIdent verification. 41.8% abandon due to document friction or camera issues.
 * **The Solution:** Automated behavioral Braze Canvas journey:
   - *Hour 2 (Push Notification):* Reassurance prompt (*'You are 2 minutes away from your wallet'* + deep link to VideoIdent SDK).
   - *Day 1 (Email):* Security trust guide highlighting Boerse Stuttgart's 160-year regulated exchange heritage.
